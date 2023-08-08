@@ -1,14 +1,13 @@
 import React from 'react';
+import Button, { ButtonSize, ButtonType } from './components/Button/button';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Hello World</h1>
-        <h2>Hello World</h2>
-        <code>
-          const a = 1;
-        </code>
+        <Button disabled>Hello Button1</Button>
+        <Button btnType={ ButtonType.Primary } size={ ButtonSize.Large }>Hello Button2</Button>
+        <Button btnType={ ButtonType.Link } href="http://baidu.com" disabled>Hello Button3</Button>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
