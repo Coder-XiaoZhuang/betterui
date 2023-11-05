@@ -1,10 +1,24 @@
 import React from 'react';
 import Button, { ButtonSize, ButtonType } from './components/Button/button';
+import Menu from './components/Menu/menu';
+import MenuItem from './components/Menu/menuItem';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Menu>
+          <MenuItem>
+            cool link
+          </MenuItem>
+          <MenuItem>
+            cool link 2
+          </MenuItem>
+          <MenuItem>
+            cool link 3
+          </MenuItem>
+        </Menu>
+        <hr />
         <Button className="custom" onClick={(e) => { e.preventDefault(); alert(123); }}>Hello Button</Button>
         <Button disabled>Hello Button1</Button>
         <Button btnType={ ButtonType.Primary } size={ ButtonSize.Large }>Hello Button2</Button>  
