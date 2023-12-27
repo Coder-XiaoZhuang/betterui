@@ -17,14 +17,14 @@ const testVerProps: MenuProps = {
 const generateMenu = (props: MenuProps) => {
   return (
     <Menu {...props}>
-      <MenuItem index={0}>
+      <MenuItem>
         active
       </MenuItem>
-      <MenuItem index={1} disabled>
+      <MenuItem disabled>
         disabled
       </MenuItem>
-      <MenuItem index={2}>
-        xyz
+      <MenuItem>
+        better
       </MenuItem>
     </Menu>
   );
@@ -48,7 +48,7 @@ describe('test Menu and MenuItem component', () => {
     expect(disabledElement).toHaveClass('menu-item is-disabled');
   });
   it('click items should change active and call the right callback', () => {
-    const thirdItem = screen.getByText('xyz');
+    const thirdItem = screen.getByText('better');
     fireEvent.click(thirdItem);
     expect(thirdItem).toHaveClass('is-active');
     expect(activeElement).not.toHaveClass('is-active');
