@@ -3,11 +3,14 @@ import Button, { ButtonSize, ButtonType } from './components/Button/button';
 import Menu from './components/Menu/menu';
 import MenuItem from './components/Menu/menuItem';
 import SubMenu from './components/Menu/subMenu';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <FontAwesomeIcon icon={ faCoffee } />
         <Menu defaultIndex="0" onSelect={(index) => alert(index)} mode="vertical" defaultOpenSubMenus={['2']}>
           <MenuItem>
             cool link
