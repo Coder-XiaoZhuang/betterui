@@ -3,7 +3,7 @@ import Button from "./button";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
 const buttonMeta: ComponentMeta<typeof Button> = {
-  title: "Button",
+  title: "Button 按钮",
   component: Button,
 };
 export default buttonMeta;
@@ -16,7 +16,7 @@ export const Deafault = Template.bind({});
 Deafault.args = {
   children: 'Default Button',
 };
-Deafault.storyName = "默认按钮样式";
+Deafault.storyName = "默认按钮";
 
 export const Large = Template.bind({});
 Large.args = {
