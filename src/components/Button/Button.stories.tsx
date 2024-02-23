@@ -1,10 +1,16 @@
 import React from "react";
 import Button from "./button";
+import mdx from "./button.mdx";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
 const buttonMeta: ComponentMeta<typeof Button> = {
   title: "Button 按钮",
   component: Button,
+  parameters: {
+    docs: {
+      page: mdx,
+    },
+  },
 };
 export default buttonMeta;
 
