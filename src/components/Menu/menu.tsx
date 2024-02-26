@@ -23,6 +23,14 @@ interface IMenuContext {
 
 export const MenuContext = createContext<IMenuContext>({ index: '0' });
 
+/**
+ * 为网站提供导航功能的菜单。支持横向纵向两种模式，支持下拉菜单。
+ * ### 引用方法
+ * 
+ * ```javascript
+ * import { Menu, MenuItem, SubMenu } from 'betterui'
+ * ```
+ */
 export const Menu: React.FC<MenuProps> = (props) => {
   const {
     className,
