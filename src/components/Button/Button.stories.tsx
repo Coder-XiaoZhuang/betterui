@@ -1,56 +1,33 @@
-import React from "react";
-import Button from "./button";
-// import mdx from "./button.mdx";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import Button from './button';
 
-const buttonMeta: ComponentMeta<typeof Button> = {
-  title: "Button 按钮",
+export default {
+  title: 'Button 按钮',
   component: Button,
-  // parameters: {
-  //   docs: {
-  //     page: mdx,
-  //   },
-  // },
-};
-export default buttonMeta;
+} as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => (
-  <Button {...args}></Button>
-);
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-export const Deafault = Template.bind({});
-Deafault.args = {
+export const DefaultButton = Template.bind({});
+DefaultButton.args = {
   children: 'Default Button',
 };
-Deafault.storyName = "默认按钮";
+DefaultButton.storyName = '默认的按钮';
 
-export const Large = Template.bind({});
-Large.args = {
-  size: 'lg',
-  children: 'Large Button',
-};
+export const ButtonWithSize = () => (
+  <>
+    <Button size="lg"> Large Button </Button>
+    <Button size="sm"> Small Button </Button>
+  </>
+);
+ButtonWithSize.storyName = '不同尺寸的按钮';
 
-export const Small = Template.bind({});
-Small.args = {
-  size: 'sm',
-  children: 'Small Button',
-};
-
-export const Primary = Template.bind({});
-Primary.args = {
-  btnType: 'primary',
-  children: 'Primary Button',
-};
-
-export const Danger = Template.bind({});
-Danger.args = {
-  btnType: 'danger',
-  children: 'Danger Button',
-};
-
-export const Link = Template.bind({});
-Link.args = {
-  btnType: 'link',
-  children: 'Link Button',
-  href: 'https://google.com'
-};
+export const ButtonWithType = () => (
+  <>
+    <Button btnType="primary"> Primary Button </Button>
+    <Button btnType="danger"> Danger Button </Button>
+    <Button btnType="link" href="https://google.com"> Link Button </Button>
+  </>
+);
+ButtonWithType.storyName = '不同类型的按钮';
