@@ -4,17 +4,17 @@ import classNames from "classnames";
 export type ButtonSize = 'lg' | 'sm';
 export type ButtonType = 'primary' | 'default' | 'danger' | 'link';
 interface BaseButtonProps {
-  /**设置 Button 的自定义类名 */
+  /**选填，设置 Button 的自定义类名 */
   className?: string;
-  /**设置 Button 的禁用 */
+  /**选填，设置 Button 的禁用 */
   disabled?: boolean;
-  /**设置 Button 的尺寸 */
+  /**选填，设置 Button 的尺寸 */
   size?: ButtonSize;
-  /**设置 Button 的类型 */
+  /**选填，设置 Button 的类型 */
   btnType?: ButtonType;
-  /**设置 Button 的子元素 */
+  /**选填，设置 Button 的子元素 */
   children: React.ReactNode;
-  /**设置 Button 的超链接目标，仅在btnType属性为link时有效 */
+  /**选填，设置 Button 的超链接目标，仅在btnType属性为link时有效 */
   href?: string;
 };
 

@@ -41,14 +41,14 @@ const Template: ComponentStory<typeof Menu> = (args) => (
 );
 
 export const DefaultMenu = Template.bind({});
-DefaultMenu.storyName = "默认Menu";
+DefaultMenu.storyName = "默认的菜单";
 
 export const ClickMenu = Template.bind({});
 ClickMenu.args = {
   mode: 'horizontal',
   defaultIndex: '0',
 };
-ClickMenu.storyName = "横向Menu";
+ClickMenu.storyName = "横向的菜单";
 
 export const OpenedMenu = Template.bind({});
 OpenedMenu.args = {
@@ -56,4 +56,4 @@ OpenedMenu.args = {
   defaultIndex: '0',
   defaultOpenSubMenus: ['3'],
 };
-OpenedMenu.storyName = "纵向Menu";
+OpenedMenu.storyName = "纵向的菜单";
