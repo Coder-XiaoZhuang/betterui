@@ -27,7 +27,7 @@ export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
  * ### 引用方法
  * 
  * ```javascript
- * import { Button } from 'betterui'
+ * import { Button } from 'betterui';
  * ```
  */
 export const Button: React.FC<ButtonProps> = (props) => {

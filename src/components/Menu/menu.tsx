@@ -35,7 +35,7 @@ export const MenuContext = createContext<IMenuContext>({ index: '0' });
  * ### 引用方法
  * 
  * ```javascript
- * import { Menu, MenuItem, SubMenu } from 'betterui'
+ * import { Menu, SubMenu, MenuItem } from 'betterui';
  * ```
  */
 export const Menu: React.FC<MenuProps> = (props) => {

@@ -4,6 +4,7 @@ import Button from './button';
 
 export default {
   title: 'Button 按钮',
+  id: 'Button',
   component: Button,
 } as ComponentMeta<typeof Button>;
 
