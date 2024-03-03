@@ -15,10 +15,10 @@
     }
     &.is-disabled {
       color: $menu-item-disabled-color;
-      pointer-events: none;
-      cursor: default;
+      // pointer-events: none;
+      cursor: not-allowed;
     }
-    &.is-active, &:hover {
+    &.is-active {
       color: $menu-item-active-color;
       border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
     }
@@ -90,7 +90,7 @@
   border-right: $menu-border-width solid $menu-border-color;
   >.menu-item {
     border-left: $menu-item-active-border-width solid transparent;
-    &.is-active, &:hover {
+    &.is-active {
       border-bottom: 0px;
       border-left: $menu-item-active-border-width solid $menu-item-active-color;
     }
