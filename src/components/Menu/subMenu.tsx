@@ -40,15 +40,17 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
       setOpen(toggle);
     }, 300);
   }
-  const clickEvents = context.mode !== 'vertical' ? {
-    onClick: handleClick,
-    onMouseEnter: (e: React.MouseEvent) => { handleMouse(e, true) },
-    onMouseLeave: (e: React.MouseEvent) => { handleMouse(e, false) },
-  } : {};
-  const hoverEvents = context.mode === 'vertical' ? {
-    onMouseEnter: (e: React.MouseEvent) => { handleMouse(e, true) },
-    onMouseLeave: (e: React.MouseEvent) => { handleMouse(e, false) },
-  } : {};
+  const allEvents = (
+    context.mode !== 'vertical' ? 
+      {
+        onClick: handleClick,
+        onMouseEnter: (e: React.MouseEvent) => { handleMouse(e, true) },
+        onMouseLeave: (e: React.MouseEvent) => { handleMouse(e, false) },
+      } : 
+      {
+        onClick: handleClick,
+      }
+  );
   const renderChildren = () => {
     const subMenuClasses = classNames("better-submenu", {
       "menu-opened": menuOpen,
@@ -76,8 +78,8 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
     );
   }
   return (
-    <li key={ index } className={ classes } { ...hoverEvents }>
-      <div className="submenu-title" { ...clickEvents }>
+    <li key={ index } className={ classes } { ...allEvents }>
+      <div className="submenu-title" { ...allEvents }>
         { title }
         <Icon icon="angle-down" className="arrow-icon"/>
       </div>
