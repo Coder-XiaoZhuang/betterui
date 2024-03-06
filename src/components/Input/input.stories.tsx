@@ -17,30 +17,30 @@ export default {
 
 const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 
-export const ADefault = Template.bind({});
-ADefault.args = {
-  placeholder: '漂亮的 Input',
+export const DefaultInput = Template.bind({});
+DefaultInput.args = {
+  placeholder: 'default Input',
 };
-ADefault.storyName = '默认的 Input';
+DefaultInput.storyName = '默认的输入框';
 
-export const BDisabled = Template.bind({});
-BDisabled.args = {
-  placeholder: 'disabled input',
+export const DisabledInput = Template.bind({});
+DisabledInput.args = {
+  placeholder: 'disabled Input',
   disabled: true,
 };
-BDisabled.storyName = '被禁用的 Input';
+DisabledInput.storyName = '被禁用的输入框';
 
-export const CIcon = Template.bind({});
-CIcon.args = {
-  placeholder: 'input with icon',
+export const InputWithIcon = Template.bind({});
+InputWithIcon.args = {
+  placeholder: 'Input with icon',
   icon: 'search',
 };
-CIcon.storyName = '带图标的 Input';
+InputWithIcon.storyName = '带图标的输入框';
 
-export const DSizeInput = () => (
+export const InputWithSize = () => (
   <>
     <Input
-      defaultValue="large size"
+      placeholder="large size"
       size="lg"
     />
     <Input
@@ -49,7 +49,7 @@ export const DSizeInput = () => (
     />
   </>
 );
-DSizeInput.storyName = '大小不同的 Input';
+InputWithSize.storyName = '不同尺寸的输入框';
 
 export const EPandInput = () => (
   <>
@@ -58,11 +58,11 @@ export const EPandInput = () => (
       prepend="https://"
     />
     <Input
-      defaultValue="google"
+      defaultValue="append text"
       append=".com"
     />
   </>
 );
 
-EPandInput.storyName = '带前后缀的 Input';
+EPandInput.storyName = '带前后缀的输入框';
 

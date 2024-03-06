@@ -53,6 +53,7 @@
     background-color: $input-disabled-bg;
     border-color: $input-disabled-border-color;
     opacity: 1;
+    cursor: not-allowed;
   }
 }
 .better-input-group-prepend,
