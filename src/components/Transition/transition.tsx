@@ -18,12 +18,13 @@ export type TransitionProps = {
 } & CSSTransitionProps;
 
 /**
- * 页面中常用的内置组件，可以帮助你制作基于状态变化的过渡和动画：
- * ### 引用方法
+ * 页面中常用的内置组件，可以帮助你制作基于状态变化的过渡和动画效果
  * 
- * ```javascript
+ * ~~~js
+ * // 这样引用
  * import { Transition } from 'betterui';
- * ```
+ * ~~~
+ * 
  */
 export const Transition: React.FC<TransitionProps> = (props) => {
   const {

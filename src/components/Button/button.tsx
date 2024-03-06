@@ -24,11 +24,12 @@ export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 
 /**
  * 页面中最常用的的按钮元素，适合于完成特定的交互，支持 HTML button 和 a 链接 的所有属性
- * ### 引用方法
  * 
- * ```javascript
+ * ~~~js
+ * // 这样引用
  * import { Button } from 'betterui';
- * ```
+ * ~~~
+ * 
  */
 export const Button: React.FC<ButtonProps> = (props) => {
   const {
