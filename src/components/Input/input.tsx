@@ -19,7 +19,7 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size
 };
 
 /**
- * Input 输入框 通过鼠标或键盘输入内容，是最基础的表单域的包装
+ * Input 输入框，通过鼠标或键盘输入内容，是最基础的表单域的包装
  * 
  * ~~~js
  * // 这样引用
@@ -39,7 +39,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     ...restProps
   } = props;
 
-  const cnames = classNames('viking-input-wrapper', {
+  const cnames = classNames('better-input-wrapper', {
     [`input-size-${size}`]: size,
     'is-disabled': disabled,
     'input-group': prepend || append,
@@ -58,15 +58,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   }
   return (
     <div className={cnames} style={style}>
-      {prepend && <div className="viking-input-group-prepend">{prepend}</div>}
+      {prepend && <div className="better-input-group-prepend">{prepend}</div>}
       {icon && <div className="icon-wrapper"><Icon icon={icon} title={`title-${icon}`}/></div>}
       <input
         ref={ref}
-        className="viking-input-inner"
+        className="better-input-inner"
         disabled={disabled}
         {...restProps}
       />
-      {append && <div className="viking-input-group-append">{append}</div>}
+      {append && <div className="better-input-group-append">{append}</div>}
     </div>
   );
 });
