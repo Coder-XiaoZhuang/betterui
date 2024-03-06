@@ -4,17 +4,20 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import Icon from '../Icon/icon';
 
 type InputSize = 'lg' | 'sm';
-export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size' > {
-  /**是否禁用 Input */
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size'> {
+  /**选填，设置 Input 的禁用 */
   disabled?: boolean;
-  /**设置 input 大小，支持 lg 或者是 sm */
+  /**选填，设置 Input 大小，支持 lg 或者是 sm */
   size?: InputSize;
-  /**添加图标，在右侧悬浮添加一个图标，用于提示 */
+  /**选填，设置 Input 右侧悬浮的图标，用于提示 */
   icon?: IconProp;
-  /**添加前缀 用于配置一些固定组合 */
+  /**选填，设置 Input 前缀，用于配置一些固定组合 */
   prepend?: string | ReactElement;
-  /**添加后缀 用于配置一些固定组合 */
+  /**选填，设置 Input 后缀，用于配置一些固定组合 */
   append?: string | ReactElement;
+  /**选填，设置 Input 的占位符 */
+  placeholder?: string;
+  /**选填，设置 Input 的 change 事件 */
   onChange? : (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -56,16 +59,16 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     restProps.value = fixControlledValue(props.value);
   }
   return (
-    <div className={cnames} style={style}>
-      {prepend && <div className="better-input-group-prepend">{prepend}</div>}
-      {icon && <div className="icon-wrapper"><Icon icon={icon} title={`title-${icon}`}/></div>}
+    <div className={ cnames } style={ style }>
+      { prepend && <div className="better-input-group-prepend">{prepend}</div> }
+      { icon && <div className="icon-wrapper"><Icon icon={ icon } title={`title-${icon}`}/></div> }
       <input
-        ref={ref}
+        ref={ ref }
         className="better-input-inner"
-        disabled={disabled}
-        {...restProps}
+        disabled={ disabled }
+        { ...restProps }
       />
-      {append && <div className="better-input-group-append">{append}</div>}
+      { append && <div className="better-input-group-append">{ append }</div> }
     </div>
   );
 });

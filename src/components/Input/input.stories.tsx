@@ -15,7 +15,7 @@ export default {
   ],
 } as ComponentMeta<typeof Input>;
 
-const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
+const Template: ComponentStory<typeof Input> = (args) => <Input { ...args } />;
 
 export const DefaultInput = Template.bind({});
 DefaultInput.args = {
@@ -51,7 +51,7 @@ export const InputWithSize = () => (
 );
 InputWithSize.storyName = '不同尺寸的输入框';
 
-export const EPandInput = () => (
+export const InputWithPand = () => (
   <>
     <Input
       defaultValue="prepend text"
@@ -64,5 +64,5 @@ export const EPandInput = () => (
   </>
 );
 
-EPandInput.storyName = '带前后缀的输入框';
+InputWithPand.storyName = '带前后缀的输入框';
 
