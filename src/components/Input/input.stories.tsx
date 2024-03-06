@@ -6,13 +6,6 @@ export default {
   title: 'Input 输入框',
   id: 'Input',
   component: Input,
-  decorators: [
-    (Story) => (
-      <div style={{ width: '350px' }}>
-        <Story />
-      </div>
-    ),
-  ],
 } as ComponentMeta<typeof Input>;
 
 const Template: ComponentStory<typeof Input> = (args) => <Input { ...args } />;

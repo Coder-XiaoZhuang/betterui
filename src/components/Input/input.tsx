@@ -60,8 +60,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   }
   return (
     <div className={ cnames } style={ style }>
-      { prepend && <div className="better-input-group-prepend">{prepend}</div> }
-      { icon && <div className="icon-wrapper"><Icon icon={ icon } title={`title-${icon}`}/></div> }
+      { prepend && <div className="better-input-group-prepend">{ prepend }</div> }
+      { icon && <div className="icon-wrapper"><Icon icon={ icon } title={`title-${ icon }`}/></div> }
       <input
         ref={ ref }
         className="better-input-inner"
