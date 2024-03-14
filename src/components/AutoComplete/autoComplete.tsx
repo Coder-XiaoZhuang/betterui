@@ -2,6 +2,7 @@ import React, { FC, useState, ChangeEvent, KeyboardEvent, ReactElement, useEffec
 import classNames from 'classnames';
 import Input, { InputProps } from '../Input/input';
 import Icon from '../Icon/icon';
+import Transition from '../Transition/transition';
 import useDebounce from '../../hooks/useDebounce';
 import useClickOutside from '../../hooks/useClickOutside';
 
@@ -91,32 +92,42 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
   }
   const generateDropdown = () => {
     return (
-      <ul>
-        { 
-          suggestions.map((item, index) => {
-            const activeItem = classNames('suggestion-item', {
-              'is-active': index === highlightIndex,
-            });
-            return (
-              <li key={ index } className={ activeItem } onClick={ () => handleSelect(item) }>
-                { renderTemplate(item) }
-              </li>
-            );
-          })
-        }
-      </ul>
+      <Transition
+        in={ suggestions.length > 0 }
+        animation="zoom-in-top"
+        timeout={ 300 }
+      >
+        <ul className="better-suggestion-list">    
+          { 
+            suggestions.map((item, index) => {
+              const activeItem = classNames('suggestion-item', {
+                'is-active': index === highlightIndex,
+              });
+              return (
+                <li key={ index } className={ activeItem } onClick={ () => handleSelect(item) }>
+                  { renderTemplate(item) }
+                </li>
+              );
+            })
+          }
+        </ul>
+      </Transition>
     );
   };
   return (
-    <div className='better-auto-comlete' ref={ componentRef }>
+    <div className='better-auto-complete' ref={ componentRef }>
       <Input
         value={ inputValue }
         { ...restProps }
         onChange={ handleChange }
         onKeyDown={ handleKeyDown }
       >
-      </Input>
-      { loading && <ul><Icon icon='spinner' spin /></ul> }
+      </Input>  
+      { loading &&
+        <div className="loading-icon">
+          <Icon icon="spinner" spin/>
+        </div>
+      } 
       { suggestions.length > 0 && generateDropdown() }
     </div>
   );
