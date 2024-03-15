@@ -1,8 +1,6 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { AutoComplete, DataSourceType } from './autoComplete';
-
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { AutoComplete, AutoCompleteProps, DataSourceType } from './autoComplete';
 interface LakerPlayerProps {
   value: string;
   number: number;
@@ -12,64 +10,81 @@ interface GithubUserProps {
   url: string;
   avatar_url: string;
 };
-const SimpleComplete = () => {
-  // 第一种情况
-  // const lakers = ['bradley', 'pope', 'caruso', 'cook', 'cousins',
-  //   'james', 'AD', 'green', 'howard', 'kuzma', 'McGee', 'rando'];
-  // const handleFetch = (query: string) => {
-  //   return lakers.filter(name => name.includes(query)).map(name => ({ value: name, }));
-  // };
+export default { 
+  id: 'AutoComplete',
+  title: 'AutoComplete 联想搜索框',
+  component: AutoComplete,
+} as ComponentMeta<typeof AutoComplete>;
 
-  // 第二种情况
-  // const lakersWithNumber = [
-  //   {value: 'bradley', number: 11},
-  //   {value: 'pope', number: 1},
-  //   {value: 'caruso', number: 4},
-  //   {value: 'cook', number: 2},
-  //   {value: 'cousins', number: 15},
-  //   {value: 'james', number: 23},
-  //   {value: 'AD', number: 3},
-  //   {value: 'green', number: 14},
-  //   {value: 'howard', number: 39},
-  //   {value: 'kuzma', number: 0},
-  // ];
-  // const handleFetch = (query: string) => {
-  //   return lakersWithNumber.filter(player => player.value.includes(query));
-  // };
-  // const renderOption = (item: DataSourceType) => {
-  //   const itemWithNumber = item as DataSourceType<LakerPlayerProps>;
-  //   return (
-  //     <>
-  //       <b>名字: { itemWithNumber.value }</b>
-  //       <span>球衣号码: { itemWithNumber.number }</span>
-  //     </>
-  //   );
-  // };
+export const SimpleAutoComplete: ComponentStory<typeof AutoComplete> = (args) => {
+  const playerArr = ['bradley', 'pope', 'caruso', 'cook', 'cousins', 'james', 'AD', 'green', 'howard', 'kuzma', 'McGee', 'rando'];
+  const handleFetch = (query: string) => playerArr.filter(name => name.includes(query)).map(name => ({ value: name, }));
+  return (
+    <AutoComplete
+      { ...args }
+      placeholder="请输入"
+      fetchSuggestions={ handleFetch }
+    />
+  );
+};
+SimpleAutoComplete.storyName = '支持基本的联想搜索';
 
-  // 第三种情况
-  const handleFetch = (query: string) => {
-    return fetch(`https://api.github.com/search/users?q=${query}`)
-      .then(res => res.json())
-      .then(({ items }) => {
-        return items.slice(0, 10).map((item: any) => ({ value: item.login, ...item }));
-      });
-  };
+export const CustomAutoComplete = (args: AutoCompleteProps) => {
+  const playerArr = [
+    {value: 'bradley', number: 11},
+    {value: 'pope', number: 1},
+    {value: 'caruso', number: 4},
+    {value: 'cook', number: 2},
+    {value: 'cousins', number: 15},
+    {value: 'james', number: 23},
+    {value: 'AD', number: 3},
+    {value: 'green', number: 14},
+    {value: 'howard', number: 39},
+    {value: 'kuzma', number: 0},
+  ] ;
+  const handleFetch = (query: string) => playerArr.filter(player => player.value.includes(query));
   const renderOption = (item: DataSourceType) => {
-    const itemWithGithub = item as DataSourceType<GithubUserProps>;
+    const player = item as DataSourceType<LakerPlayerProps>;
     return (
       <>
-        <b>Name: { itemWithGithub.value }</b>
+        <span>球星名字: {player.value}</span>&nbsp;&nbsp;
+        <span>球衣号码: {player.number}</span>
       </>
     );
   };
   return (
     <AutoComplete
+      { ...args }
       fetchSuggestions={ handleFetch }
-      onSelect={ action('selected') }
+      placeholder="请输入"
       renderOption={ renderOption }
     />
   );
 };
+CustomAutoComplete.storyName = '支持自定义搜索结果模版';
 
-storiesOf('AutoComplete Component', module)
-  .add('AutoComplete', SimpleComplete);
+export const AysncAutoComplete = (args: AutoCompleteProps) => {
+  const handleFetch = (query: string) => {
+    return fetch(`https://api.github.com/search/users?q=${query}`)
+      .then(res => res.json())
+      .then(({ items }) => items.slice(0, 10).map((item: any) => ({ value: item.login, ...item, })));
+  };
+
+  const renderOption = (item: DataSourceType) => {
+    const user = item as DataSourceType<GithubUserProps>;
+    return (
+      <>
+        <span>{ user.value }</span>
+      </>
+    );
+  };
+  return (
+    <AutoComplete
+      { ...args }
+      fetchSuggestions={ handleFetch }
+      placeholder="请输入"
+      renderOption={ renderOption }
+    />
+  );
+};
+AysncAutoComplete.storyName = '支持异步搜索';
