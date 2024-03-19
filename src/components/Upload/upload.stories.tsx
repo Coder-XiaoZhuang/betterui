@@ -2,6 +2,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Upload, UploadFile } from './upload';
+import Button from '../Button/button';
+import Icon from '../Icon/icon';
 
 const defaultFileList: UploadFile[] = [
   { uid: '123', name: 'hello.md', size: 1234, status: 'uploading', percent: 30 },
@@ -38,17 +40,42 @@ const SimpleUpload = () => {
     //   defaultFileList={ defaultFileList }
     //   onRemove={ action('removed') }
     // />
+    // <Upload
+    //   action='https://jsonplaceholder.typicode.com/posts'
+    //   onChange={ action('changed') }
+    //   defaultFileList={ defaultFileList }
+    //   onRemove={ action('removed') }
+    //   name='fileName'
+    //   data={{ 'key': 'value' }}
+    //   headers={{ 'X-Powered-By': 'betterui' }}
+    //   accept='.jpg'
+    //   multiple
+    // />
+    // <Upload
+    //   action='https://jsonplaceholder.typicode.com/posts'
+    //   onChange={ action('changed') }
+    //   defaultFileList={ defaultFileList }
+    //   onRemove={ action('removed') }
+    //   name='fileName'
+    //   data={{ 'key': 'value' }}
+    //   headers={{ 'X-Powered-By': 'betterui' }}
+    //   accept='.jpg'
+    //   multiple
+    // >
+    //   <Button btnType="primary">点击上传</Button>
+    // </Upload>
     <Upload
       action='https://jsonplaceholder.typicode.com/posts'
       onChange={ action('changed') }
-      defaultFileList={ defaultFileList }
       onRemove={ action('removed') }
       name='fileName'
-      data={{ 'key': 'value' }}
-      headers={{ 'X-Powered-By': 'betterui' }}
-      accept='.jpg'
       multiple
-    />
+      drag
+    >
+      <Icon icon="upload" size="5x" theme="secondary" />
+      <br />
+      <p>点击或拖动到此区域进行上传</p>
+    </Upload>
   );
 }
 

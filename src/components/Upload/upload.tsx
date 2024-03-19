@@ -1,6 +1,6 @@
-import React, { FC, useState, useRef, ChangeEvent } from 'react';
+import React, { FC, useState, useRef, ChangeEvent, ReactNode } from 'react';
 import axios from 'axios';
-import Button from '../Button/button';
+import Dragger from './dragger';
 import UploadList from './uploadList';
 
 export type UploadFileStatus = 'ready' | 'uploading' | 'success' | 'error';
@@ -29,6 +29,8 @@ export interface UploadProps {
   withCredentials?: boolean;
   accept?: string;
   multiple?: boolean;
+  children?: ReactNode;
+  drag?: boolean;
 };
 
 export const Upload: FC<UploadProps> = (props) => {
@@ -47,6 +49,8 @@ export const Upload: FC<UploadProps> = (props) => {
     withCredentials,
     accept,
     multiple,
+    children,
+    drag,
   } = props;
   const fileInput = useRef<HTMLInputElement>(null);
   const [fileList, setFileList] = useState<UploadFile[]>(defaultFileList || []);
@@ -164,8 +168,8 @@ export const Upload: FC<UploadProps> = (props) => {
   }
   console.log('fileList的值:', fileList);
   return (
-    <div className='better-upload-component'>
-      <Button btnType='primary' onClick={ handleClick }>点击上传</Button>
+    <div className='better-upload-component' style={{ display: 'inline-block' }} onClick={ handleClick }>
+      { drag ? <Dragger onFile={ files => { uploadFiles(files) } }>{ children }</Dragger> : children }
       <input 
         type="file" 
         className="better-file-input" 
