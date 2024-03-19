@@ -1,8 +1,13 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { Upload } from './upload';
+import { Upload, UploadFile } from './upload';
 
+const defaultFileList: UploadFile[] = [
+  { uid: '123', name: 'hello.md', size: 1234, status: 'uploading', percent: 30 },
+  { uid: '122', name: 'xyz.md', size: 1234, status: 'success', percent: 30 },
+  { uid: '121', name: 'eyiha.md', size: 1234, status: 'error', percent: 30 },
+];
 // const checkFileSize = (file: File) => {
 //   if (Math.round(file.size / 1024) > 50) {
 //     alert('file too big');
@@ -30,6 +35,8 @@ const SimpleUpload = () => {
     <Upload 
       action="https://jsonplaceholder.typicode.com/posts"
       onChange={ action('changed') }
+      defaultFileList={ defaultFileList }
+      onRemove={ action('removed') }
     />
   );
 }
