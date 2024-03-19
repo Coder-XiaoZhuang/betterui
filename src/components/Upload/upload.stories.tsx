@@ -32,8 +32,14 @@ const SimpleUpload = () => {
     //   onChange={ action('changed') }
     //   beforeUpload={ filePromise }
     // />
-    <Upload 
-      action="https://jsonplaceholder.typicode.com/posts"
+    // <Upload 
+    //   action="https://jsonplaceholder.typicode.com/posts"
+    //   onChange={ action('changed') }
+    //   defaultFileList={ defaultFileList }
+    //   onRemove={ action('removed') }
+    // />
+    <Upload
+      action='https://jsonplaceholder.typicode.com/posts'
       onChange={ action('changed') }
       defaultFileList={ defaultFileList }
       onRemove={ action('removed') }
