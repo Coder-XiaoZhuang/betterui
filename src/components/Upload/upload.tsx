@@ -18,11 +18,17 @@ export interface UploadProps {
   action: string;
   defaultFileList?: UploadFile[];
   beforeUpload? : (file: File) => boolean | Promise<File>;
-  onProgress?: (percentage: number, file: File) => void;
-  onSuccess?: (data: any, file: File) => void;
-  onError?: (err: any, file: File) => void;
-  onChange?: (file: File) => void;
+  onProgress?: (percentage: number, file: UploadFile) => void;
+  onSuccess?: (data: any, file: UploadFile) => void;
+  onError?: (err: any, file: UploadFile) => void;
+  onChange?: (file: UploadFile) => void;
   onRemove?: (file: UploadFile) => void;
+  headers?: {[key: string]: any};
+  name?: string;
+  data?: {[key: string]: any};
+  withCredentials?: boolean;
+  accept?: string;
+  multiple?: boolean;
 };
 
 export const Upload: FC<UploadProps> = (props) => {
@@ -35,6 +41,12 @@ export const Upload: FC<UploadProps> = (props) => {
     onError,
     onChange,
     onRemove,
+    headers,
+    name,
+    data,
+    withCredentials,
+    accept,
+    multiple,
   } = props;
   const fileInput = useRef<HTMLInputElement>(null);
   const [fileList, setFileList] = useState<UploadFile[]>(defaultFileList || []);
@@ -98,13 +110,22 @@ export const Upload: FC<UploadProps> = (props) => {
       percent: 0,
       raw: file,
     };
-    setFileList([_file, ...fileList]);
+    setFileList(prevList => {
+      return [_file, ...prevList];
+    });
     const formData = new FormData();
-    formData.append(file.name, file);
+    formData.append(name || 'file', file);
+    if (data) {
+      Object.keys(data).forEach(key => {
+        formData.append(key, data[key]);
+      });
+    }
     axios.post(action, formData, {
       headers: {
+        ...headers,
         'Content-Type': 'multipart/form-data',
       },
+      withCredentials,
       onUploadProgress: (e) => {
         const percentage = Math.round((e.loaded * 100) / (e.total ?? 1)) || 0;
         if (percentage < 100) {
@@ -113,7 +134,7 @@ export const Upload: FC<UploadProps> = (props) => {
             status: 'uploading',
           });
           if (onProgress) {
-            onProgress(percentage, file);
+            onProgress(percentage, _file);
           }
         }
       }
@@ -123,10 +144,10 @@ export const Upload: FC<UploadProps> = (props) => {
         response: res.data 
       });
       if (onSuccess) {
-        onSuccess(res.data, file);
+        onSuccess(res.data, _file);
       }
       if (onChange) {
-        onChange(file);
+        onChange(_file);
       }
     }).catch(err => {
       updateFileList(_file, { 
@@ -134,10 +155,10 @@ export const Upload: FC<UploadProps> = (props) => {
         error: err,
       });
       if (onError) {
-        onError(err, file);
+        onError(err, _file);
       }
       if (onChange) {
-        onChange(file);
+        onChange(_file);
       }
     });
   }
@@ -151,9 +172,14 @@ export const Upload: FC<UploadProps> = (props) => {
         ref={ fileInput }
         style={{ display: 'none' }}
         onChange={ handleChange }
+        accept={ accept }
+        multiple={ multiple }
       />
       <UploadList fileList={ fileList } onRemove={ handleRemove } />
     </div>
   );
+};
+Upload.defaultProps = {
+  name: 'file',
 };
 export default Upload;
