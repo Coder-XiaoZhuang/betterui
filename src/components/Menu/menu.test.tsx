@@ -1,3 +1,5 @@
+/* eslint-disable testing-library/no-node-access */
+/* eslint-disable testing-library/no-render-in-setup */
 import React from 'react';
 import { render, RenderResult, fireEvent, waitFor } from '@testing-library/react';
 import Menu, {MenuProps} from './menu';
@@ -50,7 +52,6 @@ const createStyleFile = () => {
 let screen: RenderResult, menuElement: HTMLElement, activeElement: HTMLElement, disabledElement: HTMLElement;
 describe('test Menu and MenuItem component in default(horizontal) mode', () => {
   beforeEach(() => {
-    // eslint-disable-next-line testing-library/no-render-in-setup
     screen = render(generateMenu(testProps));
     screen.container.append(createStyleFile());
     menuElement= screen.getByTestId('test-menu');
@@ -60,7 +61,6 @@ describe('test Menu and MenuItem component in default(horizontal) mode', () => {
   it('should render correct Menu and MenuItem based on default props', () => {
     expect(menuElement).toBeInTheDocument();
     expect(menuElement).toHaveClass('better-menu test');
-    // eslint-disable-next-line testing-library/no-node-access
     expect(menuElement.querySelectorAll(':scope > li').length).toEqual(3);
     expect(activeElement).toHaveClass('menu-item is-active');
     expect(disabledElement).toHaveClass('menu-item is-disabled');
@@ -84,7 +84,6 @@ describe('test Menu and MenuItem component in default(horizontal) mode', () => {
 })
 describe('test Menu and MenuItem component in vertical mode', () => {
   beforeEach(() => {
-    // eslint-disable-next-line testing-library/no-render-in-setup
     screen = render(generateMenu(testVerProps));
     screen.container.append(createStyleFile());
   });

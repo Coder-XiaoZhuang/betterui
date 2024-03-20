@@ -1,3 +1,9 @@
+/* eslint-disable testing-library/no-wait-for-multiple-assertions */
+/* eslint-disable testing-library/render-result-naming-convention */
+/* eslint-disable testing-library/no-node-access */
+/* eslint-disable testing-library/prefer-presence-queries */
+/* eslint-disable testing-library/prefer-screen-queries */
+/* eslint-disable testing-library/no-render-in-setup */
 import React from 'react';
 import { config } from 'react-transition-group';
 import { render, RenderResult, fireEvent, waitFor } from '@testing-library/react';
@@ -34,26 +40,20 @@ let wrapper: RenderResult, inputNode: HTMLInputElement;
 
 describe('test AutoComplete component', () => {
   beforeEach(() => {
-    // eslint-disable-next-line testing-library/no-render-in-setup
     wrapper = render(<AutoComplete {...testProps}/>);
-    // eslint-disable-next-line testing-library/prefer-screen-queries
     inputNode = wrapper.getByPlaceholderText('auto-complete') as HTMLInputElement;
   });
   it('test basic AutoComplete behavior', async () => {
     // input change
     fireEvent.change(inputNode, {target: { value: 'a'}});
     await waitFor(() => {
-      // eslint-disable-next-line testing-library/prefer-screen-queries, testing-library/prefer-presence-queries
       expect(wrapper.queryByText('ab')).toBeInTheDocument();
     });
     // should have two suggestion items
-    // eslint-disable-next-line testing-library/no-node-access
     expect(wrapper.container.querySelectorAll('.suggestion-item').length).toEqual(2);
     //click the first item
-    // eslint-disable-next-line testing-library/prefer-screen-queries
     fireEvent.click(wrapper.getByText('ab'));
     expect(testProps.onSelect).toHaveBeenCalledWith({value: 'ab', number: 11});
-    // eslint-disable-next-line testing-library/prefer-screen-queries
     expect(wrapper.queryByText('ab')).not.toBeInTheDocument();
     //fill the input
     expect(inputNode.value).toBe('ab');
@@ -62,12 +62,9 @@ describe('test AutoComplete component', () => {
     // input change
     fireEvent.change(inputNode, {target: { value: 'a'}});
     await waitFor(() => {
-      // eslint-disable-next-line testing-library/prefer-screen-queries, testing-library/prefer-presence-queries
       expect(wrapper.queryByText('ab')).toBeInTheDocument();
     });
-    // eslint-disable-next-line testing-library/prefer-screen-queries
     const firstResult = wrapper.queryByText('ab');
-    // eslint-disable-next-line testing-library/prefer-screen-queries
     const secondResult = wrapper.queryByText('abc');
 
     // arrow down
@@ -82,28 +79,22 @@ describe('test AutoComplete component', () => {
     // press enter
     fireEvent.keyDown(inputNode, { keyCode: 13 });
     expect(testProps.onSelect).toHaveBeenCalledWith({value: 'ab', number: 11});
-    // eslint-disable-next-line testing-library/prefer-screen-queries
     expect(wrapper.queryByText('ab')).not.toBeInTheDocument();
   });
   it('click outside should hide the dropdown', async () => {
     // input change
     fireEvent.change(inputNode, {target: { value: 'a'}});
     await waitFor(() => {
-      // eslint-disable-next-line testing-library/prefer-screen-queries, testing-library/prefer-presence-queries
       expect(wrapper.queryByText('ab')).toBeInTheDocument();
     });
     fireEvent.click(document);
-    // eslint-disable-next-line testing-library/prefer-screen-queries
     expect(wrapper.queryByText('ab')).not.toBeInTheDocument();
   });
   it('renderOption should generate the right template', async () => {
-    // eslint-disable-next-line testing-library/render-result-naming-convention
     const wrapper = render(<AutoComplete {...testPropsWithCustomRender}/>);
-    // eslint-disable-next-line testing-library/prefer-screen-queries
     const inputNode = wrapper.getByPlaceholderText('auto-complete-2') as HTMLInputElement;
     fireEvent.change(inputNode, {target: { value: 'a'}});
     await waitFor(() => {
-      // eslint-disable-next-line testing-library/prefer-screen-queries, testing-library/prefer-presence-queries
       expect(wrapper.queryByText('name: ab')).toBeInTheDocument();
     });
   });
@@ -113,14 +104,11 @@ describe('test AutoComplete component', () => {
       fetchSuggestions: jest.fn((query) => { return Promise.resolve(testArray.filter(item => item.value.includes(query))) }),
       placeholder: 'auto-complete-3',
     };
-    // eslint-disable-next-line testing-library/render-result-naming-convention
     const wrapper = render(<AutoComplete {...testPropsWithPromise}/>);
-    // eslint-disable-next-line testing-library/prefer-screen-queries
     const inputNode = wrapper.getByPlaceholderText('auto-complete-3') as HTMLInputElement;
     fireEvent.change(inputNode, {target: { value: 'a'}});
     await waitFor(() => {
       expect(testPropsWithPromise.fetchSuggestions).toHaveBeenCalled();
-      // eslint-disable-next-line testing-library/no-wait-for-multiple-assertions, testing-library/prefer-screen-queries, testing-library/prefer-presence-queries
       expect(wrapper.queryByText('ab')).toBeInTheDocument();
     });
   });
