@@ -165,8 +165,7 @@ export const Upload: FC<UploadProps> = (props) => {
         onChange(_file);
       }
     });
-  }
-  console.log('fileList的值:', fileList);
+  };
   return (
     <div className='better-upload-component' style={{ display: 'inline-block' }} onClick={ handleClick }>
       { drag ? <Dragger onFile={ files => { uploadFiles(files) } }>{ children }</Dragger> : children }
