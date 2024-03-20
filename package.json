@@ -69,7 +69,7 @@
     "@storybook/manager-webpack5": "^6.4.22",
     "@storybook/node-logger": "^6.4.22",
     "@storybook/preset-create-react-app": "^4.1.0",
-    "@storybook/react": "^6.4.22",
+    "@storybook/react": "^6.5.16",
     "@storybook/testing-library": "^0.0.11",
     "typescript": "^4.6.4",
     "webpack": "^5.90.2"
