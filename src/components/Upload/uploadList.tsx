@@ -17,7 +17,7 @@ export const UploadList: FC<UploadListProps> = (props) => {
             <li className="better-upload-list-item" key={ item.uid }>
               <span className={ `file-name file-name-${ item.status }` }>
                 <Icon icon="file-alt" theme="secondary" />
-                { item.name }
+                <span>{ item.name }</span>
               </span>
               <span className="file-status">
                 { (item.status === 'uploading' || !item.status) && <Icon icon="spinner" spin theme="primary" /> }

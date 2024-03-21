@@ -2,6 +2,7 @@
   width: 100%;
   box-sizing: border-box;
   .better-progress-bar-outer {
+    height: 10px !important;
     border-radius: $progress-border-radius;
     background-color: $progress-bg;
     overflow: hidden;

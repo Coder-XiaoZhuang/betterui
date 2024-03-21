@@ -74,7 +74,7 @@ const SimpleUpload = () => {
     >
       <Icon icon="upload" size="5x" theme="secondary" />
       <br />
-      <p>点击或拖动到此区域进行上传</p>
+      <p>点击上传 / 拖拽文件到此区域上传</p>
     </Upload>
   );
 }
