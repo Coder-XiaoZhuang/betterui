@@ -6,6 +6,13 @@ export default {
   title: 'Button 按钮',
   id: 'Button',
   component: Button,
+  parameters: {
+    docs: {
+      source: {
+        type: "code",
+      },
+    },
+  },
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;

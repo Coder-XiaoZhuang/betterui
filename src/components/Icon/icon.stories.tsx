@@ -7,6 +7,13 @@ export default {
   title: 'Icon 组件',
   id: 'Icon',
   component: Icon,
+  parameters: {
+    docs: {
+      source: {
+        type: "code",
+      },
+    },
+  },
 } as ComponentMeta<typeof Icon>;
 
 export const DefaultIcons = () => (
@@ -15,7 +22,7 @@ export const DefaultIcons = () => (
 
     <Icon title="user" icon="user" size="2x"/>
     <Icon title="house" icon="house" size="2x"/>
-    <Icon title="download"icon="download" size="2x"/>
+    <Icon title="download" icon="download" size="2x"/>
     <Icon title="image" icon="image" size="2x"/>
     <Icon title="magnifying-glass" icon="magnifying-glass" size="2x"/>
     <Icon title="check" icon="check" size="2x"/>

@@ -6,6 +6,13 @@ export default {
   title: 'Input 输入框',
   id: 'Input',
   component: Input,
+  parameters: {
+    docs: {
+      source: {
+        type: "code",
+      },
+    },
+  },
 } as ComponentMeta<typeof Input>;
 
 const Template: ComponentStory<typeof Input> = (args) => <Input { ...args } />;
@@ -16,18 +23,25 @@ DefaultInput.args = {
 };
 DefaultInput.storyName = '默认的输入框';
 
-export const DisabledInput = Template.bind({});
-DisabledInput.args = {
-  placeholder: 'disabled Input',
-  disabled: true,
-};
+export const DisabledInput = () => (
+  <Input
+    placeholder="disabled Input"
+    disabled
+  />
+);
 DisabledInput.storyName = '被禁用的输入框';
 
-export const InputWithIcon = Template.bind({});
-InputWithIcon.args = {
-  placeholder: 'Input with icon',
-  icon: 'search',
-};
+export const InputWithIcon = () => {
+  return (
+    <>
+      <Input
+        placeholder="Input with icon"
+        icon="search"
+      />
+    </>
+  );
+
+}
 InputWithIcon.storyName = '带图标的输入框';
 
 export const InputWithSize = () => (

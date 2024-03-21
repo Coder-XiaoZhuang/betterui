@@ -7,6 +7,13 @@ export default {
   title: 'Transition 过渡效果',
   id: 'Transition',
   component: Transition,
+  parameters: {
+    docs: {
+      source: {
+        type: "code",
+      },
+    },
+  },
 } as ComponentMeta<typeof Transition>;
 
 export const DefaultTransition: ComponentStory<typeof Transition> = (args) => {

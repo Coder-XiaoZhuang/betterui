@@ -14,6 +14,13 @@ export default {
   id: 'AutoComplete',
   title: 'AutoComplete 联想搜索框',
   component: AutoComplete,
+  parameters: {
+    docs: {
+      source: {
+        type: "code",
+      },
+    },
+  },
 } as ComponentMeta<typeof AutoComplete>;
 
 export const SimpleAutoComplete: ComponentStory<typeof AutoComplete> = (args) => {

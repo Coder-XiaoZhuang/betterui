@@ -15,6 +15,13 @@ const menuMeta: ComponentMeta<typeof Menu> = {
   args: {
     defaultIndex: '1',
   },
+  parameters: {
+    docs: {
+      source: {
+        type: "code",
+      },
+    },
+  },
 };
 export default menuMeta;
 
