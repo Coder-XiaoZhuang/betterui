@@ -9,7 +9,7 @@ import axios from 'axios';
 import { render, RenderResult, fireEvent, waitFor } from '@testing-library/react';
 import { Upload, UploadProps } from './upload';
 
-jest.mock('../Icon/icon', () => {
+jest.mock('../Icon', () => {
   return (props: any) => {
     const { onClick, icon } = props;
     return <span onClick={ onClick }>{ icon }</span>;

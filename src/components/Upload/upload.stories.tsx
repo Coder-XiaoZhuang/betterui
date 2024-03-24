@@ -1,8 +1,8 @@
 import React  from 'react';
 import { ComponentMeta } from '@storybook/react';
 import { Upload, UploadProps } from './upload';
-import Button from '../Button/button';
-import Icon from '../Icon/icon';
+import Button from '../Button';
+import Icon from '../Icon';
 import { JSX } from 'react/jsx-runtime';
 
 export default { 

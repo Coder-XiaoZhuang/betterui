@@ -10,7 +10,7 @@ import { render, RenderResult, fireEvent, waitFor } from '@testing-library/react
 import { AutoComplete, AutoCompleteProps, DataSourceType } from './autoComplete';
 
 config.disabled = true;
-jest.mock('../Icon/icon', () => {
+jest.mock('../Icon', () => {
   return (props: any) => (<span onClick={props.onClick}>{props.icon}</span>);
 });
 const testArray = [

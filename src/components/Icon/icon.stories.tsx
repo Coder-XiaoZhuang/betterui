@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentMeta } from '@storybook/react';
 import Icon from './icon';
-import Button from '../Button/button';
+import Button from '../Button';
 
 export default { 
   title: 'Icon 组件',

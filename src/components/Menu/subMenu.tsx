@@ -2,8 +2,8 @@ import React,{ useContext, useState, FunctionComponentElement, ReactNode } from 
 import classNames from "classnames";
 import { MenuContext } from "./menu";
 import { MenuItemProps } from './menuItem';
-import Icon from '../Icon/icon';
-import Transition from '../Transition/transition';
+import Icon from '../Icon';
+import Transition from '../Transition';
 
 export interface SubMenuProps {
   /**选填，设置 SubMenu 的索引值 */

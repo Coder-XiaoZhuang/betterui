@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Transition from './transition';
-import Button from '../Button/button';
+import Button from '../Button';
 
 export default {
   title: 'Transition 过渡效果',
