@@ -12,7 +12,7 @@ interface GithubUserProps {
 };
 export default { 
   id: 'AutoComplete',
-  title: 'AutoComplete 联想搜索框',
+  title: 'AutoComplete 联想搜索',
   component: AutoComplete,
   parameters: {
     docs: {
