@@ -4,3 +4,40 @@ import Form from './form';
 import Item from './formItem';
 import Input from '../Input';
 import Button from '../Button';
+
+const formMeta: ComponentMeta<typeof Form> = {
+  title: 'Form 表单',
+  id: 'Form',
+  component: Form,
+  subcomponents: { 
+    'Item': Item,
+  },
+  parameters: {
+    docs: {
+      source: {
+        type: "code",
+      },
+    },
+  },
+};
+export default formMeta;
+
+export const BasicForm = () => {
+  return (
+    <Form>
+      <Item label='用户名'>
+        <Input />
+      </Item>
+      <Item label='密码'>
+        <Input type='password' />
+      </Item>
+      <Item>
+        <Input placeholder='no-label' />
+      </Item>
+      <div className='better-form-submit-area'>
+        <Button type="submit" btnType='primary'>登陆</Button>
+      </div>
+    </Form>
+  );
+};
+BasicForm.storyName = '基本的登录表单';

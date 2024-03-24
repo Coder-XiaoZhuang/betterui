@@ -1,0 +1,55 @@
+.better-form {
+  .better-row { 
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    &.better-row-no-label {
+      flex-direction: row-reverse;
+    }
+    .better-form-item-label {
+      flex-basis: 30%;
+      text-align: right;
+      padding-right: 20px;
+      >label {
+        margin-bottom: 0;
+      }
+      >label.better-form-item-required:before {
+        display: inline-block;
+        margin-right: 4px;
+        color: $danger;
+        font-size: 14px;
+        font-family: SimSun,sans-serif;
+        line-height: 1;
+        content: "*";
+      }
+    }
+    .better-form-item { 
+      flex-basis: 70%;
+      position: relative;
+      .better-input-wrapper {
+        margin-bottom: 0;
+      }
+      .better-form-item-has-error.better-form-item-control {
+        .better-input-inner {
+          border: 1px solid $danger;
+          &:focus {
+            box-shadow: $input-focus-box-shadow-error;
+          }
+        }  
+      }
+      .better-form-item-explain {
+        position: absolute;
+        bottom: -25px;
+        left: 0;
+        line-height: 25px;
+        color: $danger;
+        min-width: 100px;
+      }
+    }
+  }
+  .better-form-submit-area { 
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+  }
+}
