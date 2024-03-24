@@ -33,7 +33,7 @@ describe('test Button component', () => {
     const view = render(<Button {...testProps}>Nice</Button>);
     const element = view.getByText('Nice');
     expect(element).toBeInTheDocument();
-    expect(element).toHaveClass('btn-primary btn-lg test-class');
+    expect(element).toHaveClass('btn klass btn-primary btn-lg');
   });
   it('should render a link when btnType equals link and href is provided', () => {
     const view = render(<Button btnType="link" href="http://dummyurl">Link</Button>);
