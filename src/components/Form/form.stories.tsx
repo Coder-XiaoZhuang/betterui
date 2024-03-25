@@ -25,14 +25,11 @@ export default formMeta;
 export const BasicForm = () => {
   return (
     <Form>
-      <Item label='用户名'>
+      <Item label='用户名' name='username'>
         <Input />
       </Item>
-      <Item label='密码'>
+      <Item label='密码' name='password'>
         <Input type='password' />
-      </Item>
-      <Item>
-        <Input placeholder='no-label' />
       </Item>
       <div className='better-form-submit-area'>
         <Button type="submit" btnType='primary'>登陆</Button>
