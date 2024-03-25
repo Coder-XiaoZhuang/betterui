@@ -10,7 +10,7 @@ export interface FormItemProps {
 
 export const FormItem: FC<FormItemProps> = (props) => {
   const { name, label, children } = props;
-  const { dispatch } = useContext(FormContext);
+  const { dispatch, fields } = useContext(FormContext);
   const rowClass = classNames('better-row', {
     'better-row-no-label': !label,
   });
@@ -21,9 +21,29 @@ export const FormItem: FC<FormItemProps> = (props) => {
       value: {
         label,
         name,
+        value: '',
       },
     });
   }, [dispatch, label, name]);
+  const onValueUpdate = (e: any) => {
+    const value = e.target.value;
+    console.log('value:', value);
+    dispatch({
+      type: 'updateValue',
+      name,
+      value,
+    });
+  }
+  const fieldState = fields[name];
+  const value = fieldState && fieldState.value;
+
+  const controlProps: Record<string, any> = {};
+  controlProps.value = value;
+  controlProps.onChange = onValueUpdate;
+
+  const childList = React.Children.toArray(children);
+  const child = childList[0] as React.ReactElement;
+  const returnChildNode = React.cloneElement(child, { ...child.props, ...controlProps });
   return (
     <div className={ rowClass }>
       { label && 
@@ -32,7 +52,7 @@ export const FormItem: FC<FormItemProps> = (props) => {
         </div>
       }
       <div className='better-form-item'>
-        { children }
+        { returnChildNode }
       </div>
     </div>
   );
