@@ -1,6 +1,7 @@
 import React, { FC, ReactNode, useContext, useEffect } from 'react';
 import classNames from 'classnames';
 import { FormContext } from './form';
+import { RuleItem } from 'async-validator';
 
 export type SomeRequired<T, K extends keyof T> = T & Required<Pick<T, K>> & Omit<T, K>;
 export interface FormItemProps {
@@ -10,6 +11,8 @@ export interface FormItemProps {
   valuePropName?: string;
   trigger?: string;
   getValueFromEvent?: (...args: any) => any;
+  rules?: RuleItem[];
+  validateTrigger?: string;
 };
 
 export const FormItem: FC<FormItemProps> = (props) => {
@@ -20,8 +23,10 @@ export const FormItem: FC<FormItemProps> = (props) => {
     valuePropName, 
     trigger, 
     getValueFromEvent,
-  } = props as SomeRequired<FormItemProps, 'getValueFromEvent' | 'trigger' | 'valuePropName'>;
-  const { dispatch, fields, initialValues } = useContext(FormContext);
+    rules,
+    validateTrigger,
+  } = props as SomeRequired<FormItemProps, 'getValueFromEvent' | 'trigger' | 'valuePropName' | 'validateTrigger'>;
+  const { dispatch, fields, initialValues, validateField } = useContext(FormContext);
   const rowClass = classNames('better-row', {
     'better-row-no-label': !label,
   });
@@ -34,9 +39,11 @@ export const FormItem: FC<FormItemProps> = (props) => {
         label,
         name,
         value,
+        rules,
+        isValid: true,
       },
     });
-  }, [dispatch, initialValues, label, name]);
+  }, [dispatch, initialValues, label, name, rules]);
   const onValueUpdate = (e: any) => {
     const value = getValueFromEvent(e);
     console.log('value:', value);
@@ -46,12 +53,19 @@ export const FormItem: FC<FormItemProps> = (props) => {
       value,
     });
   }
+  const onValueValidate = async () => {
+    await validateField(name);
+  }
   const fieldState = fields[name];
   const value = fieldState && fieldState.value;
 
   const controlProps: Record<string, any> = {};
   controlProps[valuePropName] = value;
   controlProps[trigger] = onValueUpdate;
+
+  if (rules) {
+    controlProps[validateTrigger] = onValueValidate;
+  }
 
   const childList = React.Children.toArray(children);
   if (childList.length === 0) {
@@ -82,6 +96,7 @@ export const FormItem: FC<FormItemProps> = (props) => {
 FormItem.defaultProps = {
   valuePropName: 'value',
   trigger: 'onChange',
+  validateTrigger: 'onBlur',
   getValueFromEvent: (e: any) => e.target.value,
 };
 export default FormItem;

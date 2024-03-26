@@ -6,12 +6,12 @@ export interface FormProps {
   initialValues?: Record<string, any>;
   children?: ReactNode;
 };
-export type IFormContext = Pick<ReturnType<typeof useStore>, 'dispatch' | 'fields'> & Pick<FormProps, 'initialValues'>;
+export type IFormContext = Pick<ReturnType<typeof useStore>, 'dispatch' | 'fields' | 'validateField'> & Pick<FormProps, 'initialValues'>;
 export const FormContext = createContext<IFormContext>({} as IFormContext);
 export const Form: FC<FormProps> = (props) => {
   const { name, children, initialValues } = props;
-  const { form, fields, dispatch } = useStore();
-  const passedContext: IFormContext = { dispatch, fields, initialValues };
+  const { form, fields, dispatch, validateField } = useStore();
+  const passedContext: IFormContext = { dispatch, fields, initialValues, validateField, };
   return (
     <>
       <form name={ name } className='better-form'>
