@@ -24,7 +24,7 @@ export default formMeta;
 
 export const BasicForm = () => {
   return (
-    <Form>
+    <Form initialValues={{ username: 'better', password: '1234' }}>
       <Item label='用户名' name='username'>
         <Input />
       </Item>

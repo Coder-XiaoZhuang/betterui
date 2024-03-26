@@ -2,6 +2,7 @@ import React, { FC, ReactNode, useContext, useEffect } from 'react';
 import classNames from 'classnames';
 import { FormContext } from './form';
 
+export type SomeRequired<T, K extends keyof T> = T & Required<Pick<T, K>> & Omit<T, K>;
 export interface FormItemProps {
   name: string,
   label?: string;
@@ -12,24 +13,32 @@ export interface FormItemProps {
 };
 
 export const FormItem: FC<FormItemProps> = (props) => {
-  const { name, label, children, valuePropName, trigger, getValueFromEvent } = props;
-  const { dispatch, fields } = useContext(FormContext);
+  const { 
+    name, 
+    label, 
+    children, 
+    valuePropName, 
+    trigger, 
+    getValueFromEvent,
+  } = props as SomeRequired<FormItemProps, 'getValueFromEvent' | 'trigger' | 'valuePropName'>;
+  const { dispatch, fields, initialValues } = useContext(FormContext);
   const rowClass = classNames('better-row', {
     'better-row-no-label': !label,
   });
   useEffect(() => {
+    const value = (initialValues && initialValues[name]) || '';
     return dispatch({
       type: 'addField',
       name,
       value: {
         label,
         name,
-        value: '',
+        value,
       },
     });
-  }, [dispatch, label, name]);
+  }, [dispatch, initialValues, label, name]);
   const onValueUpdate = (e: any) => {
-    const value = getValueFromEvent && getValueFromEvent(e);
+    const value = getValueFromEvent(e);
     console.log('value:', value);
     dispatch({
       type: 'updateValue',
@@ -41,8 +50,8 @@ export const FormItem: FC<FormItemProps> = (props) => {
   const value = fieldState && fieldState.value;
 
   const controlProps: Record<string, any> = {};
-  controlProps[valuePropName!] = value;
-  controlProps[trigger!] = onValueUpdate;
+  controlProps[valuePropName] = value;
+  controlProps[trigger] = onValueUpdate;
 
   const childList = React.Children.toArray(children);
   if (childList.length === 0) {
