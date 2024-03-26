@@ -15,6 +15,7 @@
     "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.4",
     "@types/react-transition-group": "^4.4.10",
+    "async-validator": "^4.2.5",
     "axios": "^1.6.8",
     "classnames": "^2.3.2",
     "node-sass": "^9.0.0",
