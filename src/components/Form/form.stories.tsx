@@ -4,6 +4,7 @@ import Form from './form';
 import Item from './formItem';
 import Input from '../Input';
 import Button from '../Button';
+import { CustomRule } from './useStore';
 
 const formMeta: ComponentMeta<typeof Form> = {
   title: 'Form 表单',
@@ -22,13 +23,31 @@ const formMeta: ComponentMeta<typeof Form> = {
 };
 export default formMeta;
 
+const confirmRules: CustomRule[] = [
+  { type: 'string', required: true, min: 3, max: 8, message: '请输入长度为3-8位的密码', },
+  ({ getFieldValue }) => ({
+    asyncValidator(rule, value, callback, source, options) {
+      return new Promise((resolve, reject) => {
+        if (value !== getFieldValue('password')) {
+          reject('两次输入的密码不一致');
+        }
+        setTimeout(() => {
+          resolve();
+        }, 1000);
+      });
+    },
+  }),
+];
 export const BasicForm = () => {
   return (
     <Form initialValues={{ username: 'better', password: '1234' }}>
-      <Item label='用户名' name='username' rules={[{type: 'email', required: true, }]}>
+      <Item label='用户名' name='username' rules={[{type: 'string', required: true, message: '请输入用户名', }]}>
         <Input />
       </Item>
-      <Item label='密码' name='password' rules={[{type: 'string', required: false, min: 3, max: 8}]}>
+      <Item label='密码' name='password' rules={[{type: 'string', required: true, min: 3, max: 8, message: '请输入长度为3-8位的密码', }]}>
+        <Input type='password' />
+      </Item>
+      <Item label='重复密码' name='comfirmPwd' rules={ confirmRules }>
         <Input type='password' />
       </Item>
       <div className='better-form-submit-area'>
