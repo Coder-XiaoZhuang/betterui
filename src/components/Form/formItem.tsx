@@ -39,7 +39,8 @@ export const FormItem: FC<FormItemProps> = (props) => {
         label,
         name,
         value,
-        rules,
+        rules: rules || [],
+        errors: [],
         isValid: true,
       },
     });
@@ -58,6 +59,15 @@ export const FormItem: FC<FormItemProps> = (props) => {
   }
   const fieldState = fields[name];
   const value = fieldState && fieldState.value;
+  const errors = fieldState && fieldState.errors;
+  const isRequired = rules && rules.some(rule => rule.required);
+  const hasError = errors && errors.length > 0;
+  const labelClass = classNames({
+    'better-form-item-required': isRequired,
+  });
+  const itemClass = classNames('better-form-item-control', {
+    'better-form-item-has-error': hasError,
+  });
 
   const controlProps: Record<string, any> = {};
   controlProps[valuePropName] = value;
@@ -83,11 +93,19 @@ export const FormItem: FC<FormItemProps> = (props) => {
     <div className={ rowClass }>
       { label && 
         <div className='better-form-item-label'>
-          <label title={ label }>{ label }</label>
+          <label className={ labelClass } title={ label }>{ label }</label>
         </div>
       }
       <div className='better-form-item'>
-        { returnChildNode }
+        <div className={ itemClass }>
+          { returnChildNode }
+        </div>
+        {
+          hasError && 
+          <div className='better-form-item-explain'>
+            <span>{ errors[0]?.message }</span>
+          </div>
+        }
       </div>
     </div>
   );

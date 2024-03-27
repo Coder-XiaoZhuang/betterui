@@ -1,12 +1,12 @@
 import React, { useState, useReducer } from 'react';
-import Schema, { RuleItem, ValidateFieldsError } from 'async-validator';
+import Schema, { RuleItem, ValidateError, ValidateFieldsError } from 'async-validator';
 
 export interface FieldDetail {
   name: string;
   value: string;
   rules: RuleItem[];
   isValid: boolean;
-  errors: ValidateFieldsError[];
+  errors: ValidateError[];
 };
 
 export interface FieldsState {
@@ -53,7 +53,7 @@ function useStore() {
     const valueMap = { [name]: value };
     const validator = new Schema(descriptor);
     let isValid = true;
-    let errors: ValidateFieldsError[] = [];
+    let errors: ValidateError[] = [];
     try {
       await validator.validate(valueMap);
     } catch (e) {

@@ -28,7 +28,7 @@ export const BasicForm = () => {
       <Item label='用户名' name='username' rules={[{type: 'email', required: true, }]}>
         <Input />
       </Item>
-      <Item label='密码' name='password' rules={[{type: 'string', required: true, min: 3, max: 8}]}>
+      <Item label='密码' name='password' rules={[{type: 'string', required: false, min: 3, max: 8}]}>
         <Input type='password' />
       </Item>
       <div className='better-form-submit-area'>
