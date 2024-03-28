@@ -1,10 +1,11 @@
 import React from 'react';
 import { ComponentMeta } from '@storybook/react';
-import Form from './form';
+import Form, { FormProps } from './form';
 import Item from './formItem';
 import Input from '../Input';
 import Button from '../Button';
 import { CustomRule } from './useStore';
+import { JSX } from 'react/jsx-runtime';
 
 const formMeta: ComponentMeta<typeof Form> = {
   title: 'Form 表单',
@@ -38,9 +39,9 @@ const confirmRules: CustomRule[] = [
     },
   }),
 ];
-export const BasicForm = () => {
+export const BasicForm = (args: JSX.IntrinsicAttributes & FormProps) => {
   return (
-    <Form initialValues={{ username: 'better', password: '1234' }}>
+    <Form initialValues={{ username: 'better', password: '1234' }} { ...args }>
       <Item label='用户名' name='username' rules={[{type: 'string', required: true, message: '请输入用户名', }]}>
         <Input />
       </Item>
