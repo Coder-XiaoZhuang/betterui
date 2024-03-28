@@ -1,11 +1,12 @@
 import React, { FC, ReactNode, createContext } from 'react';
 import { ValidateError } from 'async-validator';
-import useStore from './useStore';
+import useStore, { FormState } from './useStore';
 
+export type RenderProps = (form: FormState) => ReactNode;
 export interface FormProps {
   name?: string;
   initialValues?: Record<string, any>;
-  children?: ReactNode;
+  children?: ReactNode | RenderProps;
   onSuccessfulSubmit?: (values: Record<string, any>) => void;
   onFailedSubmit?: (values: Record<string, any>, errors: Record<string, ValidateError[]>) => void;
 };
@@ -29,7 +30,7 @@ export const Form: FC<FormProps> = (props) => {
     <>
       <form name={ name } className='better-form' onSubmit={ submitForm }>
         <FormContext.Provider value={ passedContext }>
-          { children }
+          { typeof children === 'function' ? children(form) : children }
         </FormContext.Provider>
       </form>
       <div style={{ whiteSpace: 'pre-wrap' }}>{ JSON.stringify(form) }</div>

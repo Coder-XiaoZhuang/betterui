@@ -39,6 +39,7 @@ const confirmRules: CustomRule[] = [
     },
   }),
 ];
+
 export const BasicForm = (args: JSX.IntrinsicAttributes & FormProps) => {
   return (
     <Form initialValues={{ username: 'better', password: '1234' }} { ...args }>
