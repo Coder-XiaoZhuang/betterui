@@ -1,5 +1,6 @@
 import { useState, useReducer } from 'react';
 import Schema, { RuleItem, ValidateError } from 'async-validator';
+import { mapValues, each } from 'lodash-es';
 
 export type CustomRuleFunc = ({ getFieldValue }: { getFieldValue: (key: string) => string }) => RuleItem;
 export type CustomRule = RuleItem | CustomRuleFunc;
@@ -10,20 +11,23 @@ export interface FieldDetail {
   isValid: boolean;
   errors: ValidateError[];
 };
-
 export interface FieldsState {
   [key: string]: FieldDetail;
 };
-
 export interface FormState {
   isValid: boolean;
+  isSubmit: boolean;
+  errors: Record<string, ValidateError[]>;
 };
-
 export interface FieldsAction {
   type: 'addField' | 'updateValue' | 'updateValidateResult';
   name: string;
   value: any;
 };
+export interface validateErrorType extends Error {
+  errors: ValidateError[];
+  fields: Record<string, ValidateError[]>;
+}
 function fieldsReducer(state: FieldsState, action: FieldsAction): FieldsState {
   switch (action.type) {
     case 'addField':
@@ -47,19 +51,12 @@ function fieldsReducer(state: FieldsState, action: FieldsAction): FieldsState {
   }
 }
 function useStore() {
-  const [ form, setForm ] = useState<FormState>({ isValid: true, });
+  const [ form, setForm ] = useState<FormState>({ isValid: true, isSubmit: false, errors: {}, });
   const [ fields, dispatch ] = useReducer(fieldsReducer, {});
   const getFieldValue = (key: string) => {
     return fields[key]?.value;
   }
-  const transformRules = (rules: CustomRule[]) => {
-    return rules.map(rule => {
-      if (typeof rule === 'function') {
-        return rule({ getFieldValue });
-      }
-      return rule;
-    });
-  }
+  const transformRules = (rules: CustomRule[]) => (rules.map(rule => (typeof rule === 'function' ? rule({ getFieldValue }) : rule)));
   const validateField = async (name: string) => {
     const { value, rules } = fields[name];
     const afterRules = transformRules(rules);
@@ -84,12 +81,66 @@ function useStore() {
       });
     }
   };
+  const validateAllFields = async () => {
+    let isValid = true;
+    let errors: Record<string, ValidateError[]> = {};
+    // { 'username': 'better' }
+    const valueMap = mapValues(fields, field => field.value);
+    const descriptor = mapValues(fields, field => transformRules(field.rules));
+    const validator = new Schema(descriptor);
+    setForm({
+      ...form,
+      isSubmit: true,
+    });
+    try {
+      await validator.validate(valueMap);
+    } catch (e) {
+      isValid = false;
+      const err = e as validateErrorType;
+      errors = err.fields;
+      each(fields, (value, name) => {
+        if (errors[name]) {
+          const itemErrors = errors[name];
+          dispatch({
+            type: 'updateValidateResult',
+            name,
+            value: { 
+              isValid: false,
+              errors: itemErrors,
+            },
+          });
+        } else if (value.rules.length > 0 && !errors[name]) {
+          dispatch({
+            type: 'updateValidateResult',
+            name,
+            value: {
+              isValid: true,
+              errors: [],
+            },
+          });
+        }
+      });
+    } finally {
+      setForm({
+        ...form,
+        isSubmit: false,
+        isValid,
+        errors,
+      });
+      return {
+        isValid,
+        errors,
+        values: valueMap,
+      };
+    }
+  }
   return {
     form,
     fields,
     dispatch,
     getFieldValue,
     validateField,
+    validateAllFields,
   };
 }
 
