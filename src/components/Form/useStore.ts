@@ -50,11 +50,36 @@ function fieldsReducer(state: FieldsState, action: FieldsAction): FieldsState {
       return state;
   }
 }
-function useStore() {
+function useStore(initialValues?: Record<string, any>) {
   const [ form, setForm ] = useState<FormState>({ isValid: true, isSubmit: false, errors: {}, });
   const [ fields, dispatch ] = useReducer(fieldsReducer, {});
   const getFieldValue = (key: string) => {
     return fields[key]?.value;
+  }
+  const getFieldsValue = () => {
+    return mapValues(fields, field => field.value);
+  }
+  const setFieldValue = (name: string, value: any) => {
+    if (fields[name]) {
+      dispatch({
+        type: 'updateValue',
+        name,
+        value,
+      });
+    }
+  }
+  const resetFieldsValue = () => {
+    if (initialValues) {
+      each(fields, (value, name) => {
+        if (fields[name]) {
+          dispatch({
+            type: 'updateValue',
+            name,
+            value,
+          });
+        }
+      });
+    }
   }
   const transformRules = (rules: CustomRule[]) => (rules.map(rule => (typeof rule === 'function' ? rule({ getFieldValue }) : rule)));
   const validateField = async (name: string) => {
@@ -139,6 +164,9 @@ function useStore() {
     fields,
     dispatch,
     getFieldValue,
+    getFieldsValue,
+    setFieldValue,
+    resetFieldsValue,
     validateField,
     validateAllFields,
   };

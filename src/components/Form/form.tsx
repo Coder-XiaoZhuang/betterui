@@ -14,7 +14,7 @@ export type IFormContext = Pick<ReturnType<typeof useStore>, 'dispatch' | 'field
 export const FormContext = createContext<IFormContext>({} as IFormContext);
 export const Form: FC<FormProps> = (props) => {
   const { name, children, initialValues, onSuccessfulSubmit, onFailedSubmit } = props;
-  const { form, fields, dispatch, validateField, validateAllFields } = useStore();
+  const { form, fields, dispatch, validateField, validateAllFields } = useStore(initialValues);
   const passedContext: IFormContext = { dispatch, fields, initialValues, validateField, };
   const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
