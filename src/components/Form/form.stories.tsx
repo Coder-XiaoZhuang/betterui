@@ -29,10 +29,10 @@ const confirmRules: CustomRule[] = [
   ({ getFieldValue }) => ({
     asyncValidator(rule, value, callback, source, options) {
       return new Promise((resolve, reject) => {
-        if (value !== getFieldValue('password')) {
-          reject('两次输入的密码不一致');
-        }
         setTimeout(() => {
+          if (value !== getFieldValue('password')) {
+            reject('两次输入的密码不一致');
+          }
           resolve();
         }, 1000);
       });
@@ -43,18 +43,24 @@ const confirmRules: CustomRule[] = [
 export const BasicForm = (args: JSX.IntrinsicAttributes & FormProps) => {
   return (
     <Form initialValues={{ username: 'better', password: '1234' }} { ...args }>
-      <Item label='用户名' name='username' rules={[{type: 'string', required: true, message: '请输入用户名', }]}>
-        <Input />
-      </Item>
-      <Item label='密码' name='password' rules={[{type: 'string', required: true, min: 3, max: 8, message: '请输入长度为3-8位的密码', }]}>
-        <Input type='password' />
-      </Item>
-      <Item label='重复密码' name='comfirmPwd' rules={ confirmRules }>
-        <Input type='password' />
-      </Item>
-      <div className='better-form-submit-area'>
-        <Button type="submit" btnType='primary'>登陆</Button>
-      </div>
+      {
+        ({isValid, isSubmit}) => (
+          <>
+            <Item name='username' label='用户名' rules={[{ type: 'string', required: true, message: '请输入用户名' }]}>
+              <Input />
+            </Item>
+            <Item name='password' label='密码' rules={[{ type: 'string', required: true, min: 3, max: 8, message: '请输入长度为3-8位的密码' }]}>
+              <Input type='password' />
+            </Item>
+            <Item name='confirmPwd' label='重复密码' rules={ confirmRules }>
+              <Input type='password' />
+            </Item>
+            <div className="better-form-submit-area">
+              <Button type='submit' btnType='primary'>登录 { isSubmit ? '验证中' : '验证完毕' } { isValid ? '通过' : '失败' }</Button>
+            </div>
+          </>
+        )
+      }
     </Form>
   );
 };

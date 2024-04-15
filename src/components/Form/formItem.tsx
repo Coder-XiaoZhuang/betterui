@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { FC, ReactNode, useContext, useEffect } from 'react';
 import classNames from 'classnames';
 import { FormContext } from './form';
@@ -32,7 +33,7 @@ export const FormItem: FC<FormItemProps> = (props) => {
   });
   useEffect(() => {
     const value = (initialValues && initialValues[name]) || '';
-    return dispatch({
+    dispatch({
       type: 'addField',
       name,
       value: {
@@ -44,7 +45,7 @@ export const FormItem: FC<FormItemProps> = (props) => {
         isValid: true,
       },
     });
-  }, [dispatch, initialValues, label, name, rules]);
+  }, []);
   const onValueUpdate = (e: any) => {
     const value = getValueFromEvent(e);
     console.log('value:', value);
