@@ -36,8 +36,8 @@ export const Form = forwardRef<IFormRef, FormProps>((props, ref) => {
           { typeof children === 'function' ? children(form) : children }
         </FormContext.Provider>
       </form>
-      <div style={{ whiteSpace: 'pre-wrap' }}>{ JSON.stringify(form) }</div>
-      <div style={{ whiteSpace: 'pre-wrap' }}>{ JSON.stringify(fields) }</div>
+      {/* <div style={{ whiteSpace: 'pre-wrap' }}>{ JSON.stringify(form) }</div>
+      <div style={{ whiteSpace: 'pre-wrap' }}>{ JSON.stringify(fields) }</div> */}
     </>
   );
 });
