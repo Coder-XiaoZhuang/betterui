@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, createContext } from 'react';
+import React, { ReactNode, createContext, forwardRef, useImperativeHandle } from 'react';
 import { ValidateError } from 'async-validator';
 import useStore, { FormState } from './useStore';
 
@@ -11,10 +11,13 @@ export interface FormProps {
   onFailedSubmit?: (values: Record<string, any>, errors: Record<string, ValidateError[]>) => void;
 };
 export type IFormContext = Pick<ReturnType<typeof useStore>, 'dispatch' | 'fields' | 'validateField'> & Pick<FormProps, 'initialValues'>;
+export type IFormRef = Omit<ReturnType<typeof useStore>, 'dispatch' | 'fields' | 'form'>;
 export const FormContext = createContext<IFormContext>({} as IFormContext);
-export const Form: FC<FormProps> = (props) => {
+export const Form = forwardRef<IFormRef, FormProps>((props, ref) => {
   const { name, children, initialValues, onSuccessfulSubmit, onFailedSubmit } = props;
-  const { form, fields, dispatch, validateField, validateAllFields } = useStore(initialValues);
+  const { form, fields, dispatch, ...restProps } = useStore(initialValues);
+  const { validateField, validateAllFields } = restProps;
+  useImperativeHandle(ref, () => ({ ...restProps, }));
   const passedContext: IFormContext = { dispatch, fields, initialValues, validateField, };
   const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -37,7 +40,7 @@ export const Form: FC<FormProps> = (props) => {
       <div style={{ whiteSpace: 'pre-wrap' }}>{ JSON.stringify(fields) }</div>
     </>
   );
-};
+});
 
 Form.defaultProps = {
   name: 'better-form',

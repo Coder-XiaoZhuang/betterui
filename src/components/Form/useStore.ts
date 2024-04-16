@@ -70,7 +70,7 @@ function useStore(initialValues?: Record<string, any>) {
   }
   const resetFieldsValue = () => {
     if (initialValues) {
-      each(fields, (value, name) => {
+      each(initialValues, (value, name) => {
         if (fields[name]) {
           dispatch({
             type: 'updateValue',

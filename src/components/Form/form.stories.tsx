@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { ComponentMeta } from '@storybook/react';
-import Form, { FormProps } from './form';
+import Form, { FormProps, IFormRef } from './form';
 import Item from './formItem';
 import Input from '../Input';
 import Button from '../Button';
@@ -41,8 +41,12 @@ const confirmRules: CustomRule[] = [
 ];
 
 export const BasicForm = (args: JSX.IntrinsicAttributes & FormProps) => {
+  const ref = useRef<IFormRef>();
+  const resetAll = () => {
+    ref.current?.resetFieldsValue();
+  }
   return (
-    <Form initialValues={{ username: 'better', password: '1234' }} { ...args }>
+    <Form initialValues={{ username: 'better', password: '1234' }} { ...args } ref={ ref as React.RefObject<IFormRef> | null }>
       {
         ({isValid, isSubmit}) => (
           <>
@@ -57,6 +61,7 @@ export const BasicForm = (args: JSX.IntrinsicAttributes & FormProps) => {
             </Item>
             <div className="better-form-submit-area">
               <Button type='submit' btnType='primary'>登录 { isSubmit ? '验证中' : '验证完毕' } { isValid ? '通过' : '失败' }</Button>
+              <Button type="button" onClick={ resetAll }>重置</Button>
             </div>
           </>
         )
