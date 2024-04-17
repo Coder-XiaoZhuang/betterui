@@ -1,4 +1,5 @@
 .better-select {
+  width: 350px;
   position: relative;
   .better-input-wrapper {
     cursor: pointer;
@@ -86,7 +87,8 @@
     padding: 2px 5px;
     box-sizing: border-box;
     border: 1px solid rgba($primary, .2);
-    margin-left: 6px;
+    margin-top: 4px;
+    margin-right: 3px;
     border-radius: 3px;
     color: $primary;
     background-color: rgba($primary, .1);
