@@ -9,7 +9,7 @@ import Option from './option';
 
 config.disabled = true;
 
-jest.mock('../Icon/icon', () => ((props: any) => (<span onClick={props.onClick}>{props.icon}</span>)));
+jest.mock('../Icon/icon', () => ((props: any) => (<span onClick={ props.onClick }>{ props.icon }</span>)));
 
 const testProps: SelectProps = {
   defaultValue: '',
@@ -35,7 +35,7 @@ describe('test Select component', () => {
     expect(inputEle).toBeInTheDocument();
     // click the input
     fireEvent.click(inputEle);
-    const firstItem = getByText('better');
+    const firstItem = getByText('better1');
     const disabledItem = getByText('better3');
     expect(firstItem).toBeInTheDocument();
     expect(testProps.onVisibleChange).toHaveBeenCalledWith(true);
