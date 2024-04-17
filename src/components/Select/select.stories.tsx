@@ -4,19 +4,22 @@ import Select from './index';
 import { JSX } from 'react/jsx-runtime';
 import { SelectProps } from './select';
 
-export default {
+const selectMeta: ComponentMeta<typeof Select> = {
   title: 'Select 选择器',
-  component: Select,
   id: 'Select',
-  subcomponents: { 'Option': Select.Option },
-  decorators: [
-    (Story) => (
-      <div style={{ width: '350px' }}>
-        <Story />
-      </div>
-    ),
-  ],
-} as ComponentMeta<typeof Select>;
+  component: Select,
+  subcomponents: { 
+    'Option': Select.Option,
+  },
+  parameters: {
+    docs: {
+      source: {
+        type: "code",
+      },
+    },
+  },
+};
+export default selectMeta;
 
 export const DefaultSelect = (args: JSX.IntrinsicAttributes & SelectProps) => (
   <Select {...args} placeholder="请选择">

@@ -45,7 +45,8 @@
   left: 0;
   border: $menu-border-width solid $menu-border-color;
   box-shadow: $submenu-box-shadow;
-  width: 100%;
+  width: auto;
+  min-width: 350px;
   .better-select-item {
     padding: $menu-item-padding-y $menu-item-padding-x;
     cursor: pointer;
@@ -60,8 +61,8 @@
     }
     &.is-disabled {
       color: $menu-item-disabled-color;
-      pointer-events: none;
-      cursor: default;
+      // pointer-events: none;
+      cursor: not-allowed;
     }
     &:hover {
       background-color: rgba($primary, .1);
