@@ -1,16 +1,16 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import Menu from './menu';
-import SubMenu from './subMenu';
-import MenuItem from './menuItem';
+import BetterMenu from './menu';
+import BetterSubMenu from './subMenu';
+import BetterMenuItem from './menuItem';
 
-const menuMeta: ComponentMeta<typeof Menu> = {
+const menuMeta: ComponentMeta<typeof BetterMenu> = {
   title: 'Menu 菜单',
-  id: 'Menu',
-  component: Menu,
+  id: 'BetterMenu',
+  component: BetterMenu,
   subcomponents: { 
-    'SubMenu': SubMenu, 
-    'MenuItem': MenuItem,
+    'BetterSubMenu': BetterSubMenu, 
+    'BetterMenuItem': BetterMenuItem,
   },
   args: {
     defaultIndex: '1',
@@ -25,26 +25,26 @@ const menuMeta: ComponentMeta<typeof Menu> = {
 };
 export default menuMeta;
 
-const Template: ComponentStory<typeof Menu> = (args) => (
-  <Menu { ...args } >
-    <MenuItem>
+const Template: ComponentStory<typeof BetterMenu> = (args) => (
+  <BetterMenu { ...args } >
+    <BetterMenuItem>
       选项一
-    </MenuItem>
-    <MenuItem>
+    </BetterMenuItem>
+    <BetterMenuItem>
       选项二
-    </MenuItem>
-    <MenuItem disabled>
+    </BetterMenuItem>
+    <BetterMenuItem disabled>
       选项三
-    </MenuItem> 
-    <SubMenu title="选项四">
-      <MenuItem>
+    </BetterMenuItem> 
+    <BetterSubMenu title="选项四">
+      <BetterMenuItem>
         下拉选项一
-      </MenuItem>
-      <MenuItem>
+      </BetterMenuItem>
+      <BetterMenuItem>
         下拉选项二
-      </MenuItem>    
-    </SubMenu>
-  </Menu>
+      </BetterMenuItem>    
+    </BetterSubMenu>
+  </BetterMenu>
 );
 
 export const DefaultMenu = Template.bind({});

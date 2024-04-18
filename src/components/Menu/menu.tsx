@@ -35,7 +35,7 @@ export const MenuContext = createContext<IMenuContext>({ index: '0' });
  * 
  * ~~~js
  * // 这样引用
- * import { Menu, SubMenu, MenuItem } from 'betterui';
+ * import { BetterMenu, BetterSubMenu, BetterMenuItem } from 'betterui';
  * ~~~
  * 
  */
