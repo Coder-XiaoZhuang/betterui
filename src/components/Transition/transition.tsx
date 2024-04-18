@@ -22,7 +22,7 @@ export type TransitionProps = {
  * 
  * ~~~js
  * // 这样引用
- * import { Transition } from 'betterui';
+ * import { BetterTransition } from 'betterui';
  * ~~~
  * 
  */

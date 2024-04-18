@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import Transition from './transition';
-import Button from '../Button';
+import BetterTransition from './transition';
+import BetterButton from '../Button';
 
 export default {
   title: 'Transition 过渡效果',
-  id: 'Transition',
-  component: Transition,
+  id: 'BetterTransition',
+  component: BetterTransition,
   parameters: {
     docs: {
       source: {
@@ -14,29 +14,29 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Transition>;
+} as ComponentMeta<typeof BetterTransition>;
 
-export const DefaultTransition: ComponentStory<typeof Transition> = (args) => {
+export const DefaultTransition: ComponentStory<typeof BetterTransition> = (args) => {
   const [ show, setShow ] = useState(false);
   return (
     <>
-      <Button 
+      <BetterButton 
         size="lg" 
         btnType='primary' 
         onClick={ () => setShow(!show) }
       >
         { show ? 'close' : 'open' }
-      </Button>
+      </BetterButton>
       
       {/* 当wrapper为true时，Transition组件的子元素无须包裹一个根元素 */}
-      <Transition {...args } in={ show } timeout={ 300 } wrapper>
+      <BetterTransition {...args } in={ show } timeout={ 300 } wrapper>
          hi, I am betterui!
-      </Transition>
+      </BetterTransition>
 
       {/* 当wrapper为false时，Transition组件的子元素必须包裹一个根元素 */}
-      <Transition {...args } in={ show } timeout={ 300 } wrapper={ false }>
+      <BetterTransition {...args } in={ show } timeout={ 300 } wrapper={ false }>
          <div>hi, I am betterui!</div>
-      </Transition>
+      </BetterTransition>
     </>
   );
 };
@@ -51,23 +51,23 @@ export const CombineTransition = () => {
   const [ show, setShow ] = useState(false);
   return (
     <>
-      <Button 
+      <BetterButton 
         size="lg" 
         btnType='primary' 
         style={ { margin: '10px 0' } } 
         onClick={ () => setShow(!show) }
       >
         { show ? 'close' : 'open' }
-      </Button>
+      </BetterButton>
 
-      <Transition
+      <BetterTransition
         in={ show }
         timeout={ 300 }
         animation="zoom-in-left"
         wrapper
       >
-        <Button size="lg"> Default Button </Button>
-      </Transition>
+        <BetterButton size="lg"> Default BetterButton </BetterButton>
+      </BetterTransition>
     </>
   );
 };
