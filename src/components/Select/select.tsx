@@ -132,6 +132,7 @@ export const Select: FC<SelectProps> = (props) => {
     'is-disabled': disabled,
     'is-multiple': multiple,
   });
+  let tempIndex = 0;
   return (
     <div className={ containerClass } ref={ containerRef }>
       <div className="better-select-input" onClick={ handleClick }>
@@ -160,13 +161,17 @@ export const Select: FC<SelectProps> = (props) => {
         <div className="better-selected-tags" style={{ maxWidth: containerWidth.current - 32 }}> 
           {
             selectedValues.map((value, index) => {
+              tempIndex = index;
               return (
-                <span className="better-tag" key={`tag-${index}`}>
-                  {value}
+                <span className="better-tag" key={`tag-${index}`} style={{ display: index === 0 ? 'inline-block' : 'none' }}>
+                  { value }
                   <Icon icon="times" onClick={() => { handleOptionClick(value, true) }} />
                 </span>
               )
             })
+          }
+          {
+            <span className="better-tag" style={{ display: tempIndex === 0 ? 'none' : 'inline-block' }}>+{ tempIndex }</span>
           }
         </div>
       }
