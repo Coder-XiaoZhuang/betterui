@@ -1,11 +1,11 @@
 import React  from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Progress } from './progress';
+import BetterProgress from './progress';
 
 export default { 
   title: 'Progress 进度条',
-  id: 'Progress',
-  component: Progress,
+  id: 'BetterProgress',
+  component: BetterProgress,
   parameters: {
     docs: {
       source: {
@@ -13,9 +13,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Progress>;
+} as ComponentMeta<typeof BetterProgress>;
 
-const Template: ComponentStory<typeof Progress> = (args) => <Progress { ...args } />;
+const Template: ComponentStory<typeof BetterProgress> = (args) => <BetterProgress { ...args } />;
 
 export const DefaultProgress = Template.bind({});
 DefaultProgress.args = {

@@ -13,6 +13,15 @@ export interface ProgressProps {
   /**选填，设置进度条的主题，仅支持以下9种主题 */
   theme?: ThemeProps;
 };
+/**
+ * 进度条，给予用户当前系统执行中任务运行状态的反馈，多用于运行一段时间的场景，有效减轻用户在等待中产生的焦虑感。
+ * 
+ * ~~~js
+ * // 这样引用
+ * import { BetterProgress } from 'betterui';
+ * ~~~
+ * 
+ */
 export const Progress: FC<ProgressProps> = (props) => {
   const {
     percent,
