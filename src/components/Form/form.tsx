@@ -24,7 +24,7 @@ export const FormContext = createContext<IFormContext>({} as IFormContext);
  * 
  * ~~~js
  * // 这样引用
- * import { Form, Item } from 'betterui';
+ * import { BetterForm, BetterItem } from 'betterui';
  * ~~~
  * 
  */

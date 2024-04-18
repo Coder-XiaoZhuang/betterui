@@ -1,19 +1,19 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useRef } from 'react';
 import { ComponentMeta } from '@storybook/react';
-import Form, { FormProps, IFormRef } from './form';
-import Item from './formItem';
-import Input from '../Input';
-import Button from '../Button';
+import BetterForm, { FormProps, IFormRef } from './form';
+import BetterItem from './formItem';
+import BetterInput from '../Input';
+import BetterButton from '../Button';
 import { CustomRule } from './useStore';
 import { JSX } from 'react/jsx-runtime';
 
-const formMeta: ComponentMeta<typeof Form> = {
+const formMeta: ComponentMeta<typeof BetterForm> = {
   title: 'Form 表单',
-  id: 'Form',
-  component: Form,
+  id: 'BetterForm',
+  component: BetterForm,
   subcomponents: { 
-    'Item': Item,
+    'BetterItem': BetterItem,
   },
   parameters: {
     docs: {
@@ -27,17 +27,17 @@ export default formMeta;
 
 export const BasicForm = (args: JSX.IntrinsicAttributes & FormProps) => {
   return (
-    <Form { ...args } >
-      <Item label='用户名' name='name' rules={[{type: 'string', required: true, message: '请输入用户名'}]}>
-        <Input/>
-      </Item>
-      <Item label='密码' name='password' rules={[{type: 'string', required: true, min: 3, max: 8, message: '请输入长度为3-8位的密码'}]}>
-        <Input type="password"/>
-      </Item>
+    <BetterForm { ...args } >
+      <BetterItem label='用户名' name='name' rules={[{type: 'string', required: true, message: '请输入用户名'}]}>
+        <BetterInput/>
+      </BetterItem>
+      <BetterItem label='密码' name='password' rules={[{type: 'string', required: true, min: 3, max: 8, message: '请输入长度为3-8位的密码'}]}>
+        <BetterInput type="password"/>
+      </BetterItem>
       <div className='better-form-submit-area'>
-        <Button type="submit" btnType='primary'>登陆</Button>
+        <BetterButton type="submit" btnType='primary'>登陆</BetterButton>
       </div>
-    </Form>
+    </BetterForm>
   )
 }
 BasicForm.storyName = '基本的表单';
@@ -47,28 +47,28 @@ export const RegForm = (args: JSX.IntrinsicAttributes & FormProps) => {
     agreement: false,
   };
   return (
-    <Form { ...args } initialValues={ initialValues }>
-      <Item label='邮件' name='email' rules={[{type: 'email', required: true, message: '请输入正确的邮箱'}]}>
-        <Input/>
-      </Item>
-      <Item label='密码' name='password' rules={[{type: 'string', required: true, min: 3, max: 8, message: '请输入长度为3-8位的密码'}]}>
-        <Input type="password"/>
-      </Item>
+    <BetterForm { ...args } initialValues={ initialValues }>
+      <BetterItem label='邮件' name='email' rules={[{type: 'email', required: true, message: '请输入正确的邮箱'}]}>
+        <BetterInput/>
+      </BetterItem>
+      <BetterItem label='密码' name='password' rules={[{type: 'string', required: true, min: 3, max: 8, message: '请输入长度为3-8位的密码'}]}>
+        <BetterInput type="password"/>
+      </BetterItem>
       <div className='agreement-section' style={{'display': 'flex', 'justifyContent': 'center'}}>
-        <Item
+        <BetterItem
           name='agreement' 
           rules={[{type: 'enum', enum: [true], message: '请先同意协议'}]}
           getValueFromEvent={ (e) => e.target.checked }
           valuePropName='checked'
         >
-          <Input type="checkbox"/>
-        </Item>
+          <BetterInput type="checkbox"/>
+        </BetterItem>
         <span className="agree-text">注册即代表你同意<a href='#'>用户协议</a></span>
       </div>
       <div className='better-form-submit-area'>
-        <Button type="submit" btnType='primary'>登陆</Button>
+        <BetterButton type="submit" btnType='primary'>登陆</BetterButton>
       </div>
-    </Form>
+    </BetterForm>
   )
 }
 RegForm.storyName = '典型的表单';
@@ -99,27 +99,27 @@ export const CustomForm = (args: JSX.IntrinsicAttributes & FormProps) => {
     password: '123',
   };
   return (
-    <Form initialValues={ initialValues } { ...args } ref={ ref as React.RefObject<IFormRef> | null }>
+    <BetterForm initialValues={ initialValues } { ...args } ref={ ref as React.RefObject<IFormRef> | null }>
       {
         ({isValid, isSubmit}) => (
           <>
-            <Item name='username' label='用户名' rules={[{type: 'string', required: true, message: '请输入用户名'}]}>
-              <Input />
-            </Item>
-            <Item name='password' label='密码' rules={[{type: 'string', required: true, min: 3, max: 8, message: '请输入长度为3-8位的密码'}]}>
-              <Input type='password' />
-            </Item>
-            <Item name='confirmPwd' label='重复密码' rules={ confirmRules }>
-              <Input type='password' />
-            </Item>
+            <BetterItem name='username' label='用户名' rules={[{type: 'string', required: true, message: '请输入用户名'}]}>
+              <BetterInput />
+            </BetterItem>
+            <BetterItem name='password' label='密码' rules={[{type: 'string', required: true, min: 3, max: 8, message: '请输入长度为3-8位的密码'}]}>
+              <BetterInput type='password' />
+            </BetterItem>
+            <BetterItem name='confirmPwd' label='重复密码' rules={ confirmRules }>
+              <BetterInput type='password' />
+            </BetterItem>
             <div className="better-form-submit-area">
-              <Button type='submit' btnType='primary'>登录 { isSubmit ? '验证中' : '验证完毕' } { isValid ? '通过' : '失败' }</Button>
-              <Button type="button" onClick={ resetAll }>重置</Button>
+              <BetterButton type='submit' btnType='primary'>登录 { isSubmit ? '验证中' : '验证完毕' } { isValid ? '通过' : '失败' }</BetterButton>
+              <BetterButton type="button" onClick={ resetAll }>重置</BetterButton>
             </div>
           </>
         )
       }
-    </Form>
+    </BetterForm>
   );
 };
 CustomForm.storyName = '自定义校验规则';
