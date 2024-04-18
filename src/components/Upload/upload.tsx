@@ -55,7 +55,7 @@ export interface UploadProps {
  * 
  * ~~~js
  * // 这样引用
- * import { Upload } from 'betterui';
+ * import { BetterUpload } from 'betterui';
  * ~~~
  * 
  */
