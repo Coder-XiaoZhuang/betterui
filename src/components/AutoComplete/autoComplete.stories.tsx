@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { AutoComplete, AutoCompleteProps, DataSourceType } from './autoComplete';
+import BetterAutoComplete, { AutoCompleteProps, DataSourceType } from './autoComplete';
 interface LakerPlayerProps {
   value: string;
   number: number;
@@ -11,9 +11,9 @@ interface GithubUserProps {
   avatar_url: string;
 };
 export default { 
-  id: 'AutoComplete',
+  id: 'BetterAutoComplete',
   title: 'AutoComplete 联想搜索',
-  component: AutoComplete,
+  component: BetterAutoComplete,
   parameters: {
     docs: {
       source: {
@@ -21,13 +21,13 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof AutoComplete>;
+} as ComponentMeta<typeof BetterAutoComplete>;
 
-export const SimpleAutoComplete: ComponentStory<typeof AutoComplete> = (args) => {
+export const SimpleAutoComplete: ComponentStory<typeof BetterAutoComplete> = (args) => {
   const playerArr = ['bradley', 'pope', 'caruso', 'cook', 'cousins', 'james', 'AD', 'green', 'howard', 'kuzma', 'McGee', 'rando'];
   const handleFetch = (query: string) => playerArr.filter(name => name.includes(query)).map(name => ({ value: name, }));
   return (
-    <AutoComplete
+    <BetterAutoComplete
       { ...args }
       placeholder="请输入"
       fetchSuggestions={ handleFetch }
@@ -60,7 +60,7 @@ export const CustomAutoComplete = (args: AutoCompleteProps) => {
     );
   };
   return (
-    <AutoComplete
+    <BetterAutoComplete
       { ...args }
       fetchSuggestions={ handleFetch }
       placeholder="请输入"
@@ -86,7 +86,7 @@ export const AysncAutoComplete = (args: AutoCompleteProps) => {
     );
   };
   return (
-    <AutoComplete
+    <BetterAutoComplete
       { ...args }
       fetchSuggestions={ handleFetch }
       placeholder="请输入"
