@@ -27,7 +27,7 @@ export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
  * 
  * ~~~js
  * // 这样引用
- * import { Button } from 'betterui';
+ * import { BetterButton } from 'betterui';
  * ~~~
  * 
  */
