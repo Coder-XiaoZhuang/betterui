@@ -38,7 +38,7 @@ export const SelectContext = createContext<ISelectContext>({ selectedValues: [] 
  * 
  * ~~~js
  * // 这样引用
- * import { Select } from 'betterui';
+ * import { BetterSelect } from 'betterui';
  * ~~~
  */
 export const Select: FC<SelectProps> = (props) => {

@@ -1,15 +1,15 @@
 import React from 'react';
 import { ComponentMeta } from '@storybook/react';
-import Select from './index';
+import BetterSelect from './index';
 import { JSX } from 'react/jsx-runtime';
 import { SelectProps } from './select';
 
-const selectMeta: ComponentMeta<typeof Select> = {
+const selectMeta: ComponentMeta<typeof BetterSelect> = {
   title: 'Select 选择器',
-  id: 'Select',
-  component: Select,
+  id: 'BetterSelect',
+  component: BetterSelect,
   subcomponents: { 
-    'Option': Select.Option,
+    'Option': BetterSelect.Option,
   },
   parameters: {
     docs: {
@@ -22,32 +22,32 @@ const selectMeta: ComponentMeta<typeof Select> = {
 export default selectMeta;
 
 export const DefaultSelect = (args: JSX.IntrinsicAttributes & SelectProps) => (
-  <Select {...args} placeholder="请选择">
-    <Select.Option value="better1" />
-    <Select.Option value="better2" />
-    <Select.Option value="better3" />
-    <Select.Option value="better4 disabled" disabled />
-    <Select.Option value="better5" />
-  </Select>
+  <BetterSelect {...args} placeholder="请选择">
+    <BetterSelect.Option value="better1" />
+    <BetterSelect.Option value="better2" />
+    <BetterSelect.Option value="better3" />
+    <BetterSelect.Option value="better4 disabled" disabled />
+    <BetterSelect.Option value="better5" />
+  </BetterSelect>
 );
 DefaultSelect.storyName = '默认的选择器';
 
 export const MultipleSelect = (args: JSX.IntrinsicAttributes & SelectProps) => (
-  <Select {...args} placeholder="请选择" multiple>
-    <Select.Option value="better1" />
-    <Select.Option value="better2" />
-    <Select.Option value="better3" />
-    <Select.Option value="better4" />
-    <Select.Option value="better5" />
-  </Select>
+  <BetterSelect {...args} placeholder="请选择" multiple>
+    <BetterSelect.Option value="better1" />
+    <BetterSelect.Option value="better2" />
+    <BetterSelect.Option value="better3" />
+    <BetterSelect.Option value="better4" />
+    <BetterSelect.Option value="better5" />
+  </BetterSelect>
 );
 MultipleSelect.storyName = '支持多选';
 
 export const DisabledSelect = (args: JSX.IntrinsicAttributes & SelectProps) => (
-  <Select {...args} placeholder="请选择" disabled>
-    <Select.Option value="better1" />
-    <Select.Option value="better2" />
-    <Select.Option value="better3" />
-  </Select>  
+  <BetterSelect {...args} placeholder="请选择" disabled>
+    <BetterSelect.Option value="better1" />
+    <BetterSelect.Option value="better2" />
+    <BetterSelect.Option value="better3" />
+  </BetterSelect>  
 );
 DisabledSelect.storyName = '禁用状态';
