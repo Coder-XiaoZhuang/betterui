@@ -20,7 +20,7 @@ export interface IconProps extends FontAwesomeIconProps {
  * 
  * ~~~js
  * // 这样引用
- * import { Icon } from 'betterui';
+ * import { BetterIcon } from 'betterui';
  * ~~~
  * 
  */
