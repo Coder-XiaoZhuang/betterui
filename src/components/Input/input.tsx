@@ -26,7 +26,7 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size
  * 
  * ~~~js
  * // 这样引用
- * import { Input } from 'betterui';
+ * import { BetterInput } from 'betterui';
  * ~~~
  * 
  */
