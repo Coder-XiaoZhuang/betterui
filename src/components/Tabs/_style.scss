@@ -17,8 +17,8 @@
   }
   &.disabled {
     color: $nav-link-disabled-color;
-    pointer-events: none;
-    cursor: default;
+    // pointer-events: none;
+    cursor: not-allowed;
     background-color: transparent;
     border-color: transparent;
   }
