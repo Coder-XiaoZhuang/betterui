@@ -39,7 +39,7 @@ export const Alert: FC<AlertProps> = (props) => {
     [`better-alert-${type}`]: type,
   });
   const titleClass = classNames('better-alert-title', {
-    'bold-title': description
+    'bold-title': description,
   });
   const handleClose = (e: React.MouseEvent) => {
     if (onClose) {

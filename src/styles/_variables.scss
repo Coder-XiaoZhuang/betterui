@@ -10,16 +10,22 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black:    #000 !default;
 
-$blue:    #0d6efd !default;
-$indigo:  #6610f2 !default;
-$purple:  #6f42c1 !default;
-$pink:    #d63384 !default;
-$red:     #dc3545 !default;
-$orange:  #fd7e14 !default;
-$yellow:  #fadb14 !default;
-$green:   #e8ffed !default;
-$teal:    #20c997 !default;
-$cyan:    #17a2b8 !default;
+
+$blue:          #0d6efd !default;
+$indigo:        #6610f2 !default;
+$purple:        #6f42c1 !default;
+$pink:          #d63384 !default;
+$red:           #dc3545 !default;
+$orange:        #fd7e14 !default;
+$yellow:        #fadb14 !default;
+$green:         #e8ffed !default;
+$teal:          #20c997 !default;
+$cyan:          #17a2b8 !default;
+
+$light-blue:    #e8f2ff !default;
+$light-red:     #ffefe8 !default;
+$light-orange:  #fffae8 !default;
+$light-green:   #e8ffed !default;
 
 $primary:       $blue !default;
 $secondary:     $gray-600 !default;
