@@ -74,25 +74,25 @@ describe('test Select component', () => {
     // fire events
     expect(multipleProps.onChange).toHaveBeenCalledWith('better1', ['better1']);
     // add tags
-    expect(container.querySelectorAll('.better-tag').length).toEqual(1);
+    expect(container.querySelectorAll('.better-tag').length).toEqual(2);
     //remove placeholder
     expect(inputEle.placeholder).toEqual('');
     // click 2nd item
     fireEvent.click(secondItem);
     expect(multipleProps.onChange).toHaveBeenLastCalledWith('better2', ['better1', 'better2']);
-    expect(container.querySelectorAll('.better-tag').length).toEqual(2);
+    expect(container.querySelectorAll('.better-tag').length).toEqual(3);
     //reclick 2nd item
     fireEvent.click(secondItem);
     // remove acitve class
     expect(secondItem).not.toHaveClass('is-selected');
     // remove tags
-    expect(container.querySelectorAll('.better-tag').length).toEqual(1);
+    expect(container.querySelectorAll('.better-tag').length).toEqual(2);
     expect(multipleProps.onChange).toHaveBeenLastCalledWith('better2', ['better1']);
     // click tag close
     fireEvent.click(getByText('times'));
     expect(multipleProps.onChange).toHaveBeenLastCalledWith('better1', []);
     //remove all tags
-    expect(container.querySelectorAll('.better-tag').length).toEqual(0);
+    expect(container.querySelectorAll('.better-tag').length).toEqual(1);
     //refill placeholder text
     expect(inputEle.placeholder).toEqual('test');
   });

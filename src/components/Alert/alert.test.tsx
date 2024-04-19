@@ -20,7 +20,7 @@ const typeProps: AlertProps = {
   ...testProps,
   type: 'success',
   description: 'hello',
-  closable: false,
+  closable: false
 };
 
 describe('test BetterAlert Component', () => {
