@@ -34,6 +34,12 @@
   }
 }
 
+@mixin alert-style($background, $border, $color) {
+  color: $color;
+  background: $background;
+  border-color: $border;
+}
+
 @mixin zoom-animation(
   $direction: 'top',
   $scaleStart: scaleY(0),
