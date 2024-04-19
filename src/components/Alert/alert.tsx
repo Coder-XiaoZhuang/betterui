@@ -5,15 +5,15 @@ import BetterTransition from '../Transition';
 
 export type AlertType = 'success' | 'default' | 'danger' | 'warning';
 export interface AlertProps {
-  /**标题 */
+  /**必填，设置 Alert 的标题 */
   title: string;
-  /**描述 */
+  /**选填，设置 Alert 的描述 */
   description?: string;
-  /**类型 四种可选 针对四种不同的场景 */
+  /**选填，设置 Alert 的类型 */
   type?: AlertType;
-  /**关闭alert时触发的事件 */
+  /**选填，设置 Alert 关闭时触发的事件 */
   onClose?: () => void;
-  /**是否显示关闭图标*/
+  /**选填，设置 Alert 是否显示关闭图标*/
   closable?: boolean;
 };
 
