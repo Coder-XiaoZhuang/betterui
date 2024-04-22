@@ -5,7 +5,7 @@ import TabItem, { TabItemProps } from './tabItem';
 export type ITabsComponent = FC<TabsProps> & {
   Item: FC<TabItemProps>;
 };
-const TransTabs = Tabs as ITabsComponent;
-TransTabs.Item = TabItem;
+const BetterTabs = Tabs as ITabsComponent;
+BetterTabs.Item = TabItem;
 
-export default TransTabs;
+export default BetterTabs;

@@ -1,3 +1,3 @@
-import Alert from './alert';
+import BetterAlert from './alert';
 
-export default Alert;
+export default BetterAlert;

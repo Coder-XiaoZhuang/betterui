@@ -1,3 +1,3 @@
-import Progress from './progress';
+import BetterProgress from './progress';
 
-export default Progress;
+export default BetterProgress;

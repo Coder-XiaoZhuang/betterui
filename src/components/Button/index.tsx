@@ -1,3 +1,3 @@
-import Button from './button';
+import BetterButton from './button';
 
-export default Button;
+export default BetterButton;

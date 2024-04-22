@@ -1,3 +1,3 @@
-import Transition from './transition';
+import BetterTransition from './transition';
 
-export default Transition;
+export default BetterTransition;

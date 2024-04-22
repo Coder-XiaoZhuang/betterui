@@ -1,3 +1,3 @@
-import Input from './input';
+import BetterInput from './input';
 
-export default Input;
+export default BetterInput;

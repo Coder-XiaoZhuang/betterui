@@ -1,3 +1,3 @@
-import Upload from './upload';
+import BetterUpload from './upload';
 
-export default Upload;
+export default BetterUpload;

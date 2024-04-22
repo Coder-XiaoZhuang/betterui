@@ -1,21 +1,12 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import './styles/index.scss';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-
-const container = document.getElementById('root') as HTMLElement;
-const root = createRoot(container);
-
-root.render(
-  // react 严格模式不兼容部分旧的写法，例如CSSTransition库
-  // <React.StrictMode>
-  //   <App />
-  // </React.StrictMode>
-  <App />
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+export { default as BetterAlert } from './components/Alert';
+export { default as BetterAutoComplete } from './components/AutoComplete';
+export { default as BetterButton } from './components/Button';
+export { default as BetterForm } from './components/Form';
+export { default as BetterIcon } from './components/Icon';
+export { default as BetterInput } from './components/Input';
+export { default as BetterMenu } from './components/Menu';
+export { default as BetterProgress } from './components/Progress';
+export { default as BetterSelect } from './components/Select';
+export { default as BetterTabs } from './components/Tabs';
+export { default as BetterTransition } from './components/Transition';
+export { default as BetterUpload } from './components/Upload';

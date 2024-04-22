@@ -1,3 +1,3 @@
-import Icon from "./icon";
+import BetterIcon from "./icon";
 
-export default Icon;
+export default BetterIcon;
