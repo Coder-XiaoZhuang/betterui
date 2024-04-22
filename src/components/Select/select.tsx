@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import Input from '../Input';
 import Icon from '../Icon';
 import useClickOutside from '../../hooks/useClickOutside';
-import Transition from '../Transition/transition';
+import Transition from '../Transition';
 import { SelectOptionProps } from './option';
 
 export interface SelectProps {

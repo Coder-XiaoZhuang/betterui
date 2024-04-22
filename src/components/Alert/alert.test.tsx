@@ -9,7 +9,7 @@ import BetterAlert, { AlertProps } from './alert';
 
 config.disabled = true;
 
-jest.mock('../Icon/icon', () => ((props: any) => <span>{ props.icon }</span>));
+jest.mock('../Icon', () => ((props: any) => <span>{ props.icon }</span>));
 
 const testProps: AlertProps = {
   title: 'title',

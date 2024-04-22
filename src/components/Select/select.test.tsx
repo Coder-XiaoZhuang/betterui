@@ -9,7 +9,7 @@ import Option from './option';
 
 config.disabled = true;
 
-jest.mock('../Icon/icon', () => ((props: any) => (<span onClick={ props.onClick }>{ props.icon }</span>)));
+jest.mock('../Icon', () => ((props: any) => (<span onClick={ props.onClick }>{ props.icon }</span>)));
 
 const testProps: SelectProps = {
   defaultValue: '',
