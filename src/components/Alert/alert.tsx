@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import classNames from 'classnames';
-import BetterIcon from '../Icon';
-import BetterTransition from '../Transition';
+import Icon from '../Icon';
+import Transition from '../Transition';
 
 export type AlertType = 'success' | 'default' | 'danger' | 'warning';
 export interface AlertProps {
@@ -48,7 +48,7 @@ export const Alert: FC<AlertProps> = (props) => {
     setHide(true);
   };
   return (
-    <BetterTransition
+    <Transition
       in={ !hide }
       timeout={ 300 }
       animation="zoom-in-top" 
@@ -56,9 +56,9 @@ export const Alert: FC<AlertProps> = (props) => {
       <div className={ classes }>
         <span className={ titleClass }>{ title }</span>
         { description && <p className="better-alert-desc">{ description }</p> }
-        { closable && <span className="better-alert-close" onClick={ handleClose }><BetterIcon icon="times"/></span> }
+        { closable && <span className="better-alert-close" onClick={ handleClose }><Icon icon="times"/></span> }
       </div>
-    </BetterTransition>
+    </Transition>
   );
 };
 

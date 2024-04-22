@@ -5,7 +5,7 @@
 import React from 'react';
 import { config } from 'react-transition-group';
 import { render, fireEvent } from '@testing-library/react';
-import BetterAlert, { AlertProps } from './alert';
+import Alert, { AlertProps } from './alert';
 
 config.disabled = true;
 
@@ -23,17 +23,17 @@ const typeProps: AlertProps = {
   closable: false
 };
 
-describe('test BetterAlert Component', () => {
-  it('should render the correct default BetterAlert', () => {
-    const { getByText, container, queryByText } = render(<BetterAlert {...testProps}/>);
+describe('test Alert Component', () => {
+  it('should render the correct default Alert', () => {
+    const { getByText, container, queryByText } = render(<Alert {...testProps}/>);
     expect(queryByText('title')).toBeInTheDocument();
     expect(container.querySelector('.better-alert')).toHaveClass('better-alert-default');
     fireEvent.click(getByText('times'));
     expect(testProps.onClose).toHaveBeenCalled();
     expect(queryByText('title')).not.toBeInTheDocument();
   });
-  it('should render the correct BetterAlert based on different type and description', () => {
-    const { container, queryByText } = render(<BetterAlert {...typeProps}/>);
+  it('should render the correct Alert based on different type and description', () => {
+    const { container, queryByText } = render(<Alert {...typeProps}/>);
     expect(queryByText('title')).toHaveClass('bold-title');
     expect(container.querySelector('.better-alert')).toHaveClass('better-alert-success');
     expect(queryByText('hello')).toBeInTheDocument();

@@ -1,8 +1,8 @@
 import React from 'react';
 import { ComponentMeta } from '@storybook/react';
-import BetterSelect from './index';
 import { JSX } from 'react/jsx-runtime';
 import { SelectProps } from './select';
+import BetterSelect from './index';
 
 const selectMeta: ComponentMeta<typeof BetterSelect> = {
   title: 'Select 选择器',

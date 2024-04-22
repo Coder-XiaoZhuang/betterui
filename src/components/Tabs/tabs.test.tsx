@@ -5,8 +5,8 @@
 import React from 'react';
 import { render, fireEvent, RenderResult } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import BetterTabs, { TabsProps } from './tabs';
-import BetterTabItem from './tabItem';
+import Tabs, { TabsProps } from './tabs';
+import TabItem from './tabItem';
 
 const testProps: TabsProps = {
   defaultIndex: 1,
@@ -14,20 +14,20 @@ const testProps: TabsProps = {
 };
 let wrapper: RenderResult;
 
-describe('test BetterTabs Component', () => {
+describe('test Tabs Component', () => {
   beforeEach(() => {
     wrapper = render(
-      <BetterTabs {...testProps}>
-        <BetterTabItem label="tab1">content1</BetterTabItem>
-        <BetterTabItem label="tab2">content2</BetterTabItem>
-        <BetterTabItem label="disabled" disabled>content3</BetterTabItem>
-      </BetterTabs>
+      <Tabs {...testProps}>
+        <TabItem label="tab1">content1</TabItem>
+        <TabItem label="tab2">content2</TabItem>
+        <TabItem label="disabled" disabled>content3</TabItem>
+      </Tabs>
     );
   });
   afterEach(() => {
     jest.clearAllMocks();
   });
-  it('should render the correct default BetterTabs', () => {
+  it('should render the correct default Tabs', () => {
     const { queryByText, container } = wrapper;
     expect(container.querySelector('.better-tabs-nav')).toHaveClass('nav-line');
     const activeElement = queryByText('tab2');
