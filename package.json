@@ -16,6 +16,7 @@
     "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.4",
     "@types/react-transition-group": "^4.4.10",
+    "@types/tapable": "^2.2.7",
     "async-validator": "^4.2.5",
     "axios": "^1.6.8",
     "classnames": "^2.3.2",
@@ -33,7 +34,8 @@
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\"",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "build-ts": "tsc -p tsconfig.build.json"
   },
   "eslintConfig": {
     "extends": [
@@ -75,6 +77,6 @@
     "@storybook/react": "^6.5.16",
     "@storybook/testing-library": "^0.0.11",
     "typescript": "^4.6.4",
-    "webpack": "^5.90.2"
+    "webpack": "^5.72.0"
   }
 }
