@@ -30,12 +30,14 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\"",
     "eject": "react-scripts eject",
+    "clean": "rimraf ./dist",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "build-ts": "tsc -p tsconfig.build.json"
+    "build-ts": "tsc -p tsconfig.build.json",
+    "build-css": "node-sass ./src/styles/index.scss ./dist/index.css",
+    "build": "npm run clean && npm run build-ts && npm run build-css"
   },
   "eslintConfig": {
     "extends": [
@@ -76,6 +78,7 @@
     "@storybook/preset-create-react-app": "^4.1.0",
     "@storybook/react": "^6.5.16",
     "@storybook/testing-library": "^0.0.11",
+    "rimraf": "^5.0.5",
     "typescript": "^4.6.4",
     "webpack": "^5.72.0"
   }
