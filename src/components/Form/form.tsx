@@ -23,8 +23,8 @@ export const FormContext = createContext<IFormContext>({} as IFormContext);
  * Form 表单，用以收集、校验和提交数据，一般由输入框、单选框、复选框、选择器等控件组成。
  * 
  * ~~~js
- * // 这样引用
- * import { BetterForm, BetterItem } from 'betterui';
+ * // 这样引用，再分别使用 <BetterForm> 和 <BetterForm.Item>
+ * import { BetterForm } from 'betterui';
  * ~~~
  * 
  */

@@ -37,7 +37,7 @@ export const SelectContext = createContext<ISelectContext>({ selectedValues: [] 
  * ### 引用方法
  * 
  * ~~~js
- * // 这样引用
+ * // 这样引用，再分别使用 <BetterSelect>，<BetterSelect.Option>
  * import { BetterSelect } from 'betterui';
  * ~~~
  */

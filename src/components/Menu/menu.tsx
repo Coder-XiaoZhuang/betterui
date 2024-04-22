@@ -34,8 +34,8 @@ export const MenuContext = createContext<IMenuContext>({ index: '0' });
  * 为网站提供导航功能的菜单。支持横向纵向两种模式，支持下拉菜单
  * 
  * ~~~js
- * // 这样引用
- * import { BetterMenu, BetterSubMenu, BetterMenuItem } from 'betterui';
+ * // 这样引用，再分别使用 <BetterMenu>，<BetterMenu.SubMenu>，<BetterMenu.Item>
+ * import { BetterMenu } from 'betterui';
  * ~~~
  * 
  */

@@ -19,8 +19,8 @@ export interface TabsProps {
  * 用于承载同一层级下不同页面或类别的组件，方便用户在同一个页面框架下进行快速切换。
  * 
  * ~~~js
- * // 这样引用
- * import { BetterTabs, BetterTabItem } from 'betterui';
+ * // 这样引用，再分别使用 <BetterTabs>，<BetterTabs.Item>
+ * import { BetterTabs } from 'betterui';
  * ~~~
  * 
  */
