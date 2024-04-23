@@ -1,5 +1,5 @@
 {
-  "name": "@better/betterui",
+  "name": "@zhuangjiaqing/betterui",
   "version": "1.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
