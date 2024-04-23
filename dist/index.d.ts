@@ -1,3 +1,4 @@
+import './styles/index.scss';
 export { default as BetterAlert } from './components/Alert';
 export { default as BetterAutoComplete } from './components/AutoComplete';
 export { default as BetterButton } from './components/Button';
