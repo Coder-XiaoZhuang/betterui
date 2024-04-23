@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import Button from './components/Button';
-import Menu from './components/Menu/menu';
-import MenuItem from './components/Menu/menuItem';
-import SubMenu from './components/Menu/subMenu';
-import Icon from './components/Icon';
-import Transition from './components/Transition';
+import BetterButton from './components/Button';
+import BetterMenu from './components/Menu';
+import BetterIcon from './components/Icon';
+import BetterTransition from './components/Transition';
 
 library.add(fas);
 
@@ -16,42 +14,42 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Icon icon="coffee" theme="primary" size="10x" />
-        <Menu defaultIndex="0" onSelect={(index) => alert(index)} mode="horizontal">
-          <MenuItem>
+        <BetterIcon icon="coffee" theme="primary" size="10x" />
+        <BetterMenu defaultIndex="0" onSelect={(index) => alert(index)} mode="horizontal">
+          <BetterMenu.Item>
             cool link
-          </MenuItem>
-          <MenuItem disabled>
+          </BetterMenu.Item>
+          <BetterMenu.Item disabled>
             cool link 2
-          </MenuItem>
-          <SubMenu title='dropdown'>
-            <MenuItem>
+          </BetterMenu.Item>
+          <BetterMenu.SubMenu title='dropdown'>
+            <BetterMenu.Item>
               dropdown1
-            </MenuItem>
-            <MenuItem>
+            </BetterMenu.Item>
+            <BetterMenu.Item>
               dropdown2
-            </MenuItem>
-          </SubMenu>
-          <MenuItem>
+            </BetterMenu.Item>
+          </BetterMenu.SubMenu>
+          <BetterMenu.Item>
             cool link 3
-          </MenuItem>
-        </Menu>
-        <Button size="lg" btnType='primary' onClick={ () => setShow(!show) }>{ show ? 'close' : 'open' }</Button>
-        <Transition
+          </BetterMenu.Item>
+        </BetterMenu>
+        <BetterButton size="lg" btnType='primary' onClick={ () => setShow(!show) }>{ show ? 'close' : 'open' }</BetterButton>
+        <BetterTransition
           in={ show }
           timeout={ 300 }
           animation="zoom-in-left"
         >
           <div>hi, I am better</div>
-        </Transition>
-        <Transition
+        </BetterTransition>
+        <BetterTransition
           in={ show }
           timeout={ 300 }
           animation="zoom-in-left"
           wrapper
         >
-          <div><Button size="lg" btnType='primary'>better btn</Button></div>
-        </Transition>
+          <div><BetterButton size="lg" btnType='primary'>better btn</BetterButton></div>
+        </BetterTransition>
       </header>
     </div>
   );
