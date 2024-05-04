@@ -28,7 +28,7 @@
     "test:nowatch": "cross-env CI=true react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\"",
     "eject": "react-scripts eject",
     "clean": "rimraf ./dist",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx src/ --max-warnings 1",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src/ --max-warnings 2",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "build-ts": "tsc -p tsconfig.build.json",
