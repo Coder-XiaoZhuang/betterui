@@ -3,8 +3,13 @@
 
 name: betterui CI
 
-on: [push]
+# 触发条件：在 push 到 master 分支后
+on:
+  push:
+    branches:
+      - master
 
+# 任务
 jobs:
   build:
 
@@ -12,15 +17,24 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [14.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run prepublishOnly
+      # 拉取代码
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      # 1、生成静态文件
+      - name: Build-Storybook
+        run: npm ci && npm run build-storybook
+
+      # 2、部署到 GitHub Pages
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: master
+          FOLDER: storybook-static
