@@ -33,7 +33,7 @@ jobs:
 
       # 2、部署到 GitHub Pages
       - name: Deploy
-        uses: zhuangjiaqing/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: master
