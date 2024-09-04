@@ -33,8 +33,8 @@ jobs:
 
       # 2、部署到 GitHub Pages
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: zhuangjiaqing/github-pages-deploy-action@releases/v3
         with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: master
           FOLDER: storybook-static
