@@ -70,7 +70,9 @@
     ]
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "@storybook/addon-actions": "^6.4.22",
     "@storybook/addon-essentials": "^6.4.22",
     "@storybook/addon-interactions": "^6.4.22",
@@ -96,6 +98,7 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "rimraf": "^5.0.5",
+    "rollup-plugin-typescript2": "^0.36.0",
     "typescript": "^4.6.4",
     "webpack": "^5.72.0"
   },
