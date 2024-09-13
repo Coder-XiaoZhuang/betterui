@@ -1,4 +1,3 @@
-import React from 'react';
 import './button.css';
 interface ButtonProps {
     /**
@@ -25,5 +24,5 @@ interface ButtonProps {
 /**
  * Primary UI component for user interaction
  */
-export declare const Button: ({ primary, size, backgroundColor, label, ...props }: ButtonProps) => React.JSX.Element;
+export declare const Button: ({ primary, size, backgroundColor, label, ...props }: ButtonProps) => import("react/jsx-runtime").JSX.Element;
 export {};
