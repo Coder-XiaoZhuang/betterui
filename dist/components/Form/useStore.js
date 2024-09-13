@@ -47,11 +47,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 import { useState, useReducer } from 'react';
 import Schema from 'async-validator';
-import { mapValues, each } from 'lodash-es';
-;
-;
-;
-;
+import mapValues from 'lodash-es/mapValues';
+import each from 'lodash-es/each';
+
 function fieldsReducer(state, action) {
     var _a, _b, _c;
     switch (action.type) {

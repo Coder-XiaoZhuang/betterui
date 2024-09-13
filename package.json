@@ -30,11 +30,13 @@
     "clean": "rimraf ./dist",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src/ --max-warnings 5",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public",
+    "prepublishOnly": "npm run test:nowatch && npm run lint && npm run build",
     "build-ts": "tsc -p tsconfig.build.json",
     "build-css": "node-sass ./src/styles/index.scss ./dist/index.css",
-    "build": "npm run clean && npm run build-ts && npm run build-css",
-    "prepublishOnly": "npm run test:nowatch && npm run lint && npm run build"
+    "build-storybook": "build-storybook -s public",
+    "build": "npm run clean && npm run build-es && npm run build-umd",
+    "build-es": "rollup --config rollup/rollup.esm.config.js",
+    "build-umd": "rollup --config rollup/rollup.umd.config.js"
   },
   "husky": {
     "hooks": {
@@ -73,6 +75,7 @@
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-replace": "^5.0.7",
     "@storybook/addon-actions": "^6.4.22",
     "@storybook/addon-essentials": "^6.4.22",
     "@storybook/addon-interactions": "^6.4.22",
@@ -98,6 +101,9 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "rimraf": "^5.0.5",
+    "rollup-plugin-exclude-dependencies-from-bundle": "^1.1.23",
+    "rollup-plugin-sass": "^1.13.2",
+    "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.36.0",
     "typescript": "^4.6.4",
     "webpack": "^5.72.0"
