@@ -5,7 +5,7 @@ const config = {
   ...basicConfig,
   output: [
     {
-      file: 'dist/index.es.js',
+      file: 'dist/index.js',
       format: 'es'
     }
   ],
