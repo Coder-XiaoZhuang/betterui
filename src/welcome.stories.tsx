@@ -47,7 +47,7 @@ storiesOf('Welcome 首页', module)
           </code>
         </p>
         <p>
-          修改 src/App.js，引入 betterui 的按钮组件。
+          修改 src/App.tsx，引入 betterui 的按钮组件。
         </p>
         <p>
           <code>
