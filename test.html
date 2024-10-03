@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./dist/index.css">
+  <link rel="stylesheet" href="https://unpkg.com/@zhuangjiaqing/betterui@1.0.2/dist/index.css">
   <title>Document</title>
 </head>
 <body>
@@ -17,6 +17,8 @@
 <script>
   const domContainer = document.querySelector('#root');
   const root = ReactDOM.createRoot(domContainer);
-  root.render(React.createElement(Betterui.BetterButton, {}, 'Text from UMD'));
+  root.render(React.createElement(Betterui.BetterButton, {
+    btnType: 'primary',
+  }, 'Hello World'));
 </script>
 </html>
