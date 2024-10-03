@@ -17,12 +17,12 @@ storiesOf('Welcome 首页', module)
         <br /><br />
 
         <h5>CDN</h5>
-        <p>目前可以通过 unpkg.com/@zhuangjiaqing/betterui 获取到最新版本的资源，在页面上引入 js 和 css 文件即可开始使用。</p>
+        <p>目前可以通过 unpkg.com/@zhuangjiaqing/betterui 获取到最新版本的资源，在页面上引入 css 和 js 文件即可开始使用。</p>
         <code>
           {'<'}!-- 引入样式 --{'>'}
-          <p>&lt;link rel="stylesheet" href="https://unpkg.com/@zhuangjiaqing/betterui@1.0.2/dist/index.css" /&gt;</p>
+          <p>&lt;link rel="stylesheet" href="https://unpkg.com/@zhuangjiaqing/betterui@1.0.3/dist/index.css" /&gt;</p>
           {'<'}!-- 引入组件库 --{'>'}
-          <p>&lt;script src="https://unpkg.com/@zhuangjiaqing/betterui@1.0.2/dist/index.umd.js"&gt;&lt;/script&gt;</p>
+          <p>&lt;script src="https://unpkg.com/@zhuangjiaqing/betterui@1.0.3/dist/index.umd.js"&gt;&lt;/script&gt;</p>
         </code>
         <p>注意：我们建议使用 CDN 引入 betterui 的用户在链接地址上锁定版本，以免将来 betterui 升级时受到非兼容性更新的影响。锁定版本的方法请查看 <a href="https://unpkg.com/">unpkg.com</a>。</p>
       </>
@@ -31,14 +31,13 @@ storiesOf('Welcome 首页', module)
   .add('快速上手', () => {
     return (
       <>
-        <h3><strong>Hello world</strong></h3>
         <p>这里我们提供两个基础的例子来快速上手 betterui。</p>
         <h4>CDN</h4>
         <p>
-          通过 CDN 的方式我们可以很容易地使用 Element 写出一个 Hello world 页面。
+          通过 CDN 的方式我们可以很容易地使用 betterui 写出一个 Hello world 页面。
           <a href="https://github.com/Coder-XiaoZhuang/betterui/blob/main/test.html">示例源码</a>
           &nbsp;
-          <a href="https://unpkg.com/@zhuangjiaqing/betterui@1.0.2/test.html">在线演示</a>
+          <a href="https://unpkg.com/@zhuangjiaqing/betterui@1.0.3/test.html">在线演示</a>
         </p>
         <h4>npm安装</h4>
         <p>
@@ -66,7 +65,7 @@ storiesOf('Welcome 首页', module)
             <p>export default App;</p>
           </code>
         </p>
-        <p>好了，现在你应该能看到页面上已经有了 antd 的蓝色按钮组件，接下来就可以继续选用其他组件开发应用了。</p>
+        <p>好了，现在你应该能看到页面上已经有了 betterui 的蓝色按钮组件，接下来就可以继续选用其他组件开发应用了。</p>
         
       
       
