@@ -41,7 +41,32 @@ storiesOf('Welcome 首页', module)
           <a href="https://unpkg.com/@zhuangjiaqing/betterui@1.0.2/test.html">在线演示</a>
         </p>
         <h4>npm安装</h4>
-        通过 CDN 的方式我们可以很容易地使用 Element 写出一个 Hello world 页面。在线演示
+        <p>
+          <code>
+            npm install @zhuangjiaqing/betterui --save
+          </code>
+        </p>
+        <p>
+          修改 src/App.js，引入 betterui 的按钮组件。
+        </p>
+        <p>
+          <code>
+            <p>import React from 'react';</p>
+            <p>import '@zhuangjiaqing/betterui/dist/index.css';</p>
+            <p>import { '{ BetterButton }' } from '@zhuangjiaqing/betterui';</p>
+            <p>
+              {`function App() {
+                return (
+                  <div className="App">
+                    <BetterButton btnType='primary'>Hello World</BetterButton>
+                  </div>
+                );
+              }`}
+            </p>
+            <p>export default App;</p>
+          </code>
+        </p>
+        <p>好了，现在你应该能看到页面上已经有了 antd 的蓝色按钮组件，接下来就可以继续选用其他组件开发应用了。</p>
         
       
       
