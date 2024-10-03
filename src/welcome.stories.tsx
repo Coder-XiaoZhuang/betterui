@@ -65,10 +65,11 @@ storiesOf('Welcome 首页', module)
             <p>export default App;</p>
           </code>
         </p>
-        <p>好了，现在你应该能看到页面上已经有了 betterui 的蓝色按钮组件，接下来就可以继续选用其他组件开发应用了。</p>
         
-      
-      
+        <p>
+          好了，现在你应该能看到页面上已经有了 betterui 的蓝色按钮组件，接下来就可以继续选用其他组件开发应用了。
+          <a href="https://github.com/Coder-XiaoZhuang/betterui_test_app/blob/main/src/App.tsx">示例源码</a>
+        </p>
       </>
     );
   }, { info : { disable: true } });
