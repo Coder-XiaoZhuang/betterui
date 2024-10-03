@@ -1,6 +1,6 @@
 {
   "name": "@zhuangjiaqing/betterui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React components library",
   "author": "better",
   "main": "./dist/index.js",
