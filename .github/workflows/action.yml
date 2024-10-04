@@ -7,7 +7,7 @@ name: betterui CI
 on:
   push:
     branches:
-      - master
+      - personal/better_v1.0.0
 
 # 任务
 jobs:
@@ -36,5 +36,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: master
+          BRANCH: personal/better_v1.0.0
           FOLDER: storybook-static
