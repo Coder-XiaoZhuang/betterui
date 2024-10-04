@@ -3,11 +3,11 @@
 
 name: betterui CI
 
-# 触发条件：在 push 到 master 分支后
+# 触发条件：在 push 到 personal/better_v1.0.3 分支后
 on:
   push:
     branches:
-      - master
+      - personal/better_v1.0.3
 
 # 任务
 jobs:
@@ -36,5 +36,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: master
+          BRANCH: personal/better_v1.0.3
           FOLDER: storybook-static
