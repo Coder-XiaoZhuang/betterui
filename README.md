@@ -1,46 +1,74 @@
-# Getting Started with Create React App
+## 引言
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+欢迎来到 betterui 组件库，这是一个基于 React 的组件库，用于快速搭建页面。
 
-## Available Scripts
+[点击查看组件库文档](https://coder-xiaozhuang.github.io/betterui)
 
-In the project directory, you can run:
 
-### `npm start`
+## 快速上手
+node版本推荐：14.x.x
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 如何安装
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### NPM
+推荐使用 npm 的方式安装，它能更好地和 webpack 打包工具配合使用。
 
-### `npm test`
+~~~javascript
+npm install @zhuangjiaqing/betterui --save
+~~~
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### CDN
+目前可以通过 `unpkg.com/@zhuangjiaqing/betterui` 获取到最新版本的资源，在页面上引入 css 和 js 文件即可开始使用。
 
-### `npm run build`
+~~~javascript
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/@zhuangjiaqing/betterui@1.0.3/dist/index.css" />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/@zhuangjiaqing/betterui@1.0.3/dist/index.umd.js"></script>
+~~~
+> 注意：我们建议使用 CDN 引入 betterui 的用户在链接地址上锁定版本，以免将来 betterui 升级时受到非兼容性更新的影响。锁定版本的方法请查看 unpkg.com。
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 如何使用
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### NPM
 
-### `npm run eject`
+~~~javascript
+import React from 'react';
+import '@zhuangjiaqing/betterui/dist/index.css';
+import { BetterButton } from '@zhuangjiaqing/betterui';
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+function App() {
+  return (
+    <div>
+      <BetterButton btnType='primary'>Hello World</BetterButton>
+    </div>
+  );
+}
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+export default App;
+~~~
+好了，现在你应该能看到页面上已经有了 betterui 的蓝色按钮组件，接下来就可以继续选用其他组件开发应用了。[示例源码](https://github.com/Coder-XiaoZhuang/betterui_test_app/blob/main/src/App.tsx)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### CDN
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+通过 CDN 的方式我们可以很容易地使用 betterui 写出一个 Hello world 页面。
+[示例源码](https://github.com/Coder-XiaoZhuang/betterui/blob/main/test.html)
+[在线演示](https://unpkg.com/@zhuangjiaqing/betterui@1.0.3/test.html)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 一些本地开发命令
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+~~~bash
+//启动本地环境
+npm run storybook
+
+//跑单元测试
+npm run test
+
+//build可发布静态文件
+npm run build
+
+//发布到 npm
+npm run publish
+~~~
